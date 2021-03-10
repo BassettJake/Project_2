@@ -36,17 +36,17 @@ app.get('/viewCharacters', function (req, res) {
     console.log("Back from DB with result: ");
     console.log(result.rows);
 
-    var h = "";
+    var html = "";
     for(i in result.rows){
       for(j in result.rows[i]){
-        h += '<li>' + result.rows[i][j] + '</li>';
+        html += '<li>' + result.rows[i][j] + '</li>';
       }
     }
-    h += '</ul>';
-    res.render('pages/viewCharacters', function(err, h){
-console.log(h);
-      res.send(h)
-    });
+    html += '</ul>';
+    var params = {
+      dbResult: html
+    }
+    res.render('pages/viewCharacters', params);
   });
 });
 app.use(express.static(path.join(__dirname, 'public')));
