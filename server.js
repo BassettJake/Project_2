@@ -26,8 +26,8 @@ app.post('/viewCharacters', (req, res) => {
 });
 app.get('/viewCharacters', function (req, res) {
   var sql = "SELECT * FROM characters";
-var test = "a test";
-  var results = pool.query(sql, function (err, result) {
+
+  pool.query(sql, function (err, result) {
 
     if (err) {
       console.log("Error in query: ");
@@ -35,90 +35,89 @@ var test = "a test";
     }
     console.log("Back from DB with result: ");
     console.log(result.rows);
-console.log(test);
-    return result.rows;
-  });
-  console.log(results);
-  var html = '<section class="characterView">';
-  for (i in results) {
-    for (j in results[i]) {
-      //dont print out the id
-      if (j == 1) {
-        html += '<section class="characterHeader">' +
-          '<h1 id="characterName">' + results[i][j] + '</h1>';
-      } else if (j == 2) {
-        html += '<section class="characterCS">' +
-          '<span class="characterCS">' + results[i][j] + '</span>';
-      } else if (j == 3) {
-        html += '<span class="characterCS">' + results[i][j] + '</span>' +
-          '</section></section>'; //close characterHeader and characterCS
-      } else if (j == 4) {
-        var sqlGear = "SELECT * FROM gear WHERE gear.id = " + results[i][j];
 
-        var resultsGear = pool.query(sqlGear, function (err, gear) {
-
-          if (err) {
-            console.log("Error in query: ");
-            console.log(err);
-          }
-          console.log("Back from DB with result: ");
-          console.log(gear.rows);
-
-          return gear.rows;
-        });
-        console.log(resultsGear);
-        for (g in resultsGear) {
-          for (gr in resultsGear[g]) {
-            if (gr == 1) {
-              html += '<section id="characterGear">' +
-                '<span class="characterGear">' + resultsGear[g][gr] + '</span>';
-            } else if (gr == 2) {
-              html += '<span class="characterGear">' + resultsGear[g][gr] + '</span>' +
-                '</section>'; //close characterGear
+    var results = result.rows;
+    var html = '<section class="characterView">';
+    for (i in results) {
+      for (j in results[i]) {
+        //dont print out the id
+        if (j == 1) {
+          html += '<section class="characterHeader">' +
+            '<h1 id="characterName">' + results[i][j] + '</h1>';
+        } else if (j == 2) {
+          html += '<section class="characterCS">' +
+            '<span class="characterCS">' + results[i][j] + '</span>';
+        } else if (j == 3) {
+          html += '<span class="characterCS">' + results[i][j] + '</span>' +
+            '</section></section>'; //close characterHeader and characterCS
+        } else if (j == 4) {
+          var sqlGear = "SELECT * FROM gear WHERE gear.id = " + results[i][j];
+  
+          pool.query(sqlGear, function (err, gear) {
+  
+            if (err) {
+              console.log("Error in query: ");
+              console.log(err);
             }
+            console.log("Back from DB with result: ");
+            console.log(gear.rows);
 
-          }
-        }
-      } else if (j == 5) {
-        console.log("HERE1");
-        var sqlStats = "SELECT * FROM stats WHERE stats.id = ";
-        console.log("HERE2");
-        var resultsStats = pool.query(sqlStats, function (err, stats) {
-
-          if (err) {
-            console.log("Error in query: ");
-            console.log(err);
-          }
-          console.log("Back from DB with result: ");
-          console.log(stats.rows);
-
-          return stats.rows;
-        });
-        console.log(resultsStats);
-        for (s in resultsStats) {
-          for (sr in resultsStats[g]) {
-            if (sr == 1) {
-              html += '<section id="characterStats">' +
-                '<span class="characterStat">' + resultsStats[s][sr] + '</span>';
-            } else if (sr == 2) {
-              html += '<span class="characterStat">' + resultsStats[s][sr] + '</span>';
-            } else if (sr == 3) {
-              html += '<span class="characterStat">' + resultsStats[s][sr] + '</span>';
-            } else if (sr == 4) {
-              html += '<span class="characterStat">' + resultsStats[s][sr] + '</span>' +
-                '</section>'; //close characterStats
+            var resultsGear = gear.rows;
+            for (g in resultsGear) {
+              for (gr in resultsGear[g]) {
+                if (gr == 1) {
+                  html += '<section id="characterGear">' +
+                    '<span class="characterGear">' + resultsGear[g][gr] + '</span>';
+                } else if (gr == 2) {
+                  html += '<span class="characterGear">' + resultsGear[g][gr] + '</span>' +
+                    '</section>'; //close characterGear
+                }
+    
+              }
             }
+          });
 
-          }
+        } else if (j == 5) {
+          var sqlStats = "SELECT * FROM stats WHERE stats.id = " + results[i][j];
+          pool.query(sqlStats, function (err, stats) {
+  
+            if (err) {
+              console.log("Error in query: ");
+              console.log(err);
+            }
+            console.log("Back from DB with result: ");
+            console.log(stats.rows);
+
+            var resultsStats = stats.rows;
+            for (s in resultsStats) {
+              for (sr in resultsStats[g]) {
+                if (sr == 1) {
+                  html += '<section id="characterStats">' +
+                    '<span class="characterStat">' + resultsStats[s][sr] + '</span>';
+                } else if (sr == 2) {
+                  html += '<span class="characterStat">' + resultsStats[s][sr] + '</span>';
+                } else if (sr == 3) {
+                  html += '<span class="characterStat">' + resultsStats[s][sr] + '</span>';
+                } else if (sr == 4) {
+                  html += '<span class="characterStat">' + resultsStats[s][sr] + '</span>' +
+                    '</section>'; //close characterStats
+                }
+    
+              }
+            }
+          });
+        } else if (j == 6) {
+          html += '<section id="characterBackstory>' +
+            '<p id="characterBackstoryP">' + results[i][j] + '</p>' +
+            '</section>'; //close characterBackstory
         }
-      } else if (j == 6) {
-        html += '<section id="characterBackstory>' +
-          '<p id="characterBackstoryP">' + results[i][j] + '</p>' +
-          '</section>'; //close characterBackstory
       }
     }
-  }
-  html += '</section>'; //close characterView
+    html += '</section>'; //close characterView
+
+  });
+
+
   var params = {
     dbResult: html
   }
