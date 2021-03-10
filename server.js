@@ -36,7 +36,7 @@ app.post('/viewCharacters', (req, res) => {
     var params = {
       result: result.rows
     }
-    return res.redirect('/viewCharacters')
+    res.redirect('/viewCharacters', params)
   });
 
 });
