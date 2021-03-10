@@ -26,7 +26,7 @@ app.post('/viewCharacters', (req, res) => {
 });
 app.get('/viewCharacters', function (req, res) {
   var sql = "SELECT * FROM characters";
-
+var test = "a test";
   var results = pool.query(sql, function (err, result) {
 
     if (err) {
@@ -35,10 +35,10 @@ app.get('/viewCharacters', function (req, res) {
     }
     console.log("Back from DB with result: ");
     console.log(result.rows);
-
+console.log(test);
     return result.rows;
   });
-console.log(results);
+  console.log(results);
   var html = '<section class="characterView">';
   for (i in results) {
     for (j in results[i]) {
@@ -82,7 +82,7 @@ console.log(results);
       } else if (j == 5) {
         console.log("HERE1");
         var sqlStats = "SELECT * FROM stats WHERE stats.id = ";
-console.log("HERE2");
+        console.log("HERE2");
         var resultsStats = pool.query(sqlStats, function (err, stats) {
 
           if (err) {
@@ -111,10 +111,10 @@ console.log("HERE2");
 
           }
         }
-      } else if(j == 6){
-        html += '<section id="characterBackstory>' + 
-        '<p id="characterBackstoryP">' + results[i][j] + '</p>' +
-        '</section>'; //close characterBackstory
+      } else if (j == 6) {
+        html += '<section id="characterBackstory>' +
+          '<p id="characterBackstoryP">' + results[i][j] + '</p>' +
+          '</section>'; //close characterBackstory
       }
     }
   }
