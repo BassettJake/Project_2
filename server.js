@@ -26,15 +26,15 @@ app.post('/viewCharacters', (req, res) => {
 });
 app.get('/viewCharacters', function (req, res) {
   const sqlCharacters = "SELECT * FROM characters";
-  //const sqlGear = "SELECT * FROM gear WHERE gear.id = " + results[i][j];
-  //const sqlStats = "SELECT * FROM stats WHERE stats.id = " + results[i][j];
+  const sqlGear = "SELECT * FROM gear WHERE gear.id = ";
+  const sqlStats = "SELECT * FROM stats WHERE stats.id = ";
 
   let characterRes = getCharacters(sqlCharacters);
-  let gearRes = "nothing"; //getGear(sqlGear, characterRes);
-  let statsRes = "nothing"; //getStats(sqlStats, characterRes);
+  let gearRes = getGear(sqlGear, characterRes);
+  let statsRes = getStats(sqlStats, characterRes);
   buildHtml(characterRes, gearRes, statsRes);
 
-  function getCharacters(sql){
+  function getCharacters(sql) {
     pool.query(sql, function (err, result) {
       if (err) {
         console.log("Error in query: ");
@@ -46,103 +46,50 @@ app.get('/viewCharacters', function (req, res) {
     console.log("HERE ONE");
     return result;
   }
-  function buildHtml(characterRes, gearRes, statsRes){
-    console.log("HERE TWO");
-  }
 
-  /*pool.query(sql, function (err, result) {
+  function getGear(sql, characterRes) {
+    for (i in characterRes) {
+      for (j in characterRes[i]) {
+        sql = sql + characterRes[i][j];
+        pool.query(sql, function (err, result) {
 
-    if (err) {
-      console.log("Error in query: ");
-      console.log(err);
-    }
-    console.log("Back from DB with result: ");
-    console.log(result.rows);
-
-    var results = result.rows;
-    var html = '<section class="characterView">';
-    for (i in results) {
-      for (j in results[i]) {
-        //dont print out the id
-        if (j == 'name') {
-          html += '<section class="characterHeader">' +
-            '<h1 id="characterName">' + results[i][j] + '</h1>';
-        } else if (j == 'class') {
-          html += '<section class="characterCS">' +
-            '<span class="characterCS">' + results[i][j] + '</span>';
-        } else if (j == 'species') {
-          html += '<span class="characterCS">' + results[i][j] + '</span>' +
-            '</section></section>'; //close characterHeader and characterCS
-
-        } else if (j == 'gear_id') {
-          var sqlGear = "SELECT * FROM gear WHERE gear.id = " + results[i][j];
-
-          pool.query(sqlGear, function (err, gear) {
-
-            if (err) {
-              console.log("Error in query: ");
-              console.log(err);
-            }
-            console.log("Back from DB with result: ");
-            console.log(gear.rows);
-
-            var resultsGear = gear.rows;
-            for (g in resultsGear) {
-              for (gr in resultsGear[g]) {
-                if (gr == 'weapon') {
-                  html += '<section id="characterGear">' +
-                    '<span class="characterGear">' + resultsGear[g][gr] + '</span>';
-                } else if (gr == 'armor') {
-                  html += '<span class="characterGear">' + resultsGear[g][gr] + '</span>' +
-                    '</section>'; //close characterGear
-                }
-
-              }
-            }
-          });
-
-        } else if (j == 'stats_id') {
-          var sqlStats = "SELECT * FROM stats WHERE stats.id = " + results[i][j];
-          pool.query(sqlStats, function (err, stats) {
-
-            if (err) {
-              console.log("Error in query: ");
-              console.log(err);
-            }
-            console.log("Back from DB with result: ");
-            console.log(stats.rows);
-
-            var resultsStats = stats.rows;
-            for (s in resultsStats) {
-              for (sr in resultsStats[g]) {
-                if (sr == 'strength') {
-                  html += '<section id="characterStats">' +
-                    '<span class="characterStat">' + resultsStats[s][sr] + '</span>';
-                } else if (sr == 'agility') {
-                  html += '<span class="characterStat">' + resultsStats[s][sr] + '</span>';
-                } else if (sr == 'wisdom') {
-                  html += '<span class="characterStat">' + resultsStats[s][sr] + '</span>';
-                } else if (sr == 'intelligence') {
-                  html += '<span class="characterStat">' + resultsStats[s][sr] + '</span>' +
-                    '</section>'; //close characterStats
-                }
-
-              }
-            }
-          });
-        } else if (j == 'backstory') {
-          html += '<section id="characterBackstory>' +
-            '<p id="characterBackstoryP">' + results[i][j] + '</p>' +
-            '</section>'; //close characterBackstory
-        }
+          if (err) {
+            console.log("Error in query: ");
+            console.log(err);
+          }
+          console.log("Back from DB with result: ");
+          console.log(result.rows);
+        });
+        return result;
       }
     }
-    html += '</section>'; //close characterView
-    var params = {
-      dbResult: html
+  }
+
+  function getStats(sql, characterRes) {
+    for (i in characterRes) {
+      for (j in characterRes[i]) {
+        sql = sql + characterRes[i][j];
+        pool.query(sql, function (err, result) {
+
+          if (err) {
+            console.log("Error in query: ");
+            console.log(err);
+          }
+          console.log("Back from DB with result: ");
+          console.log(result.rows);
+        });
+        return result;
+      }
     }
-    res.render('pages/viewCharacters', params);
-  });*/
+  }
+
+  function buildHtml(characterRes, gearRes, statsRes) {
+    console.log("HERE TWO");
+  }
+  var params = {
+    dbResult: "testing"
+  }
+  res.render('pages/viewCharacters', params);
 });
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
