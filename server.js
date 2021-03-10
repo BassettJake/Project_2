@@ -38,17 +38,16 @@ app.get('/viewCharacters', function (req, res) {
 
     var html = "";
     for(i in result.rows){
-      console.log(result.rows[i]);
       for(j in result.rows[i]){
-        console.log(result.rows[i][j]);
         html += '<li>' + result.rows[i][j] + '</li>';
       }
     }
     html += '</ul>';
 
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(html);
+
     res.render('pages/viewCharacters');
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.send(html);
     res.end();
   });
 });
