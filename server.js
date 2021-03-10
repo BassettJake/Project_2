@@ -27,6 +27,18 @@ app.post('/viewCharacters', (req, res) => {
 app.get('/viewCharacters', function (req, res) {
   var sql = "SELECT * FROM characters";
 
+  var r = pool.query(sql, function (err, result) {
+
+    if (err) {
+      console.log("Error in query: ");
+      console.log(err);
+    }
+    console.log("Back from DB with result: ");
+    console.log(result.rows);
+return result;
+  });
+  console.log(r);
+
   pool.query(sql, function (err, result) {
 
     if (err) {
