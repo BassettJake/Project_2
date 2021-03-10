@@ -42,17 +42,17 @@ app.get('/viewCharacters', function (req, res) {
       for (j in results[i]) {
         console.log(i, j);
         //dont print out the id
-        if (j == 1) {
+        if (j == 'name') {
           html += '<section class="characterHeader">' +
             '<h1 id="characterName">' + results[i][j] + '</h1>';
-        } else if (j == 2) {
+        } else if (j == 'class') {
           html += '<section class="characterCS">' +
             '<span class="characterCS">' + results[i][j] + '</span>';
-        } else if (j == 3) {
+        } else if (j == 'species') {
           html += '<span class="characterCS">' + results[i][j] + '</span>' +
             '</section></section>'; //close characterHeader and characterCS
 
-        } else if (j == 4) {
+        } else if (j == 'gear_id') {
           var sqlGear = "SELECT * FROM gear WHERE gear.id = " + results[i][j];
 
           pool.query(sqlGear, function (err, gear) {
@@ -67,10 +67,10 @@ app.get('/viewCharacters', function (req, res) {
             var resultsGear = gear.rows;
             for (g in resultsGear) {
               for (gr in resultsGear[g]) {
-                if (gr == 1) {
+                if (gr == 'weapon') {
                   html += '<section id="characterGear">' +
                     '<span class="characterGear">' + resultsGear[g][gr] + '</span>';
-                } else if (gr == 2) {
+                } else if (gr == 'armor') {
                   html += '<span class="characterGear">' + resultsGear[g][gr] + '</span>' +
                     '</section>'; //close characterGear
                 }
@@ -79,7 +79,7 @@ app.get('/viewCharacters', function (req, res) {
             }
           });
 
-        } else if (j == 5) {
+        } else if (j == 'stats_id') {
           var sqlStats = "SELECT * FROM stats WHERE stats.id = " + results[i][j];
           pool.query(sqlStats, function (err, stats) {
 
@@ -93,14 +93,14 @@ app.get('/viewCharacters', function (req, res) {
             var resultsStats = stats.rows;
             for (s in resultsStats) {
               for (sr in resultsStats[g]) {
-                if (sr == 1) {
+                if (sr == 'strength') {
                   html += '<section id="characterStats">' +
                     '<span class="characterStat">' + resultsStats[s][sr] + '</span>';
-                } else if (sr == 2) {
+                } else if (sr == 'agility') {
                   html += '<span class="characterStat">' + resultsStats[s][sr] + '</span>';
-                } else if (sr == 3) {
+                } else if (sr == 'wisdom') {
                   html += '<span class="characterStat">' + resultsStats[s][sr] + '</span>';
-                } else if (sr == 4) {
+                } else if (sr == 'intelligence') {
                   html += '<span class="characterStat">' + resultsStats[s][sr] + '</span>' +
                     '</section>'; //close characterStats
                 }
@@ -108,7 +108,7 @@ app.get('/viewCharacters', function (req, res) {
               }
             }
           });
-        } else if (j == 6) {
+        } else if (j == 'backstory') {
           html += '<section id="characterBackstory>' +
             '<p id="characterBackstoryP">' + results[i][j] + '</p>' +
             '</section>'; //close characterBackstory
