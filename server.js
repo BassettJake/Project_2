@@ -30,11 +30,11 @@ app.get('/viewCharacters', function (req, res) {
   const sqlStats = "SELECT * FROM stats WHERE stats.id = " + results[i][j];
 
   let characterRes = getCharacters(sqlCharacters);
-  let gearRes = getGear(sqlGear, characterRes);
-  let gearRes = getStats(sqlStats, characterRes);
+  let gearRes = "nothing"; //getGear(sqlGear, characterRes);
+  let statsRes = "nothing"; //getStats(sqlStats, characterRes);
   buildHtml(characterRes, gearRes, statsRes);
 
-  function getCharacter(sql){
+  function getCharacters(sql){
     pool.query(sql, function (err, result) {
       if (err) {
         console.log("Error in query: ");
@@ -46,8 +46,11 @@ app.get('/viewCharacters', function (req, res) {
     console.log(result);
     return result;
   }
+  function buildHtml(characterRes, gearRes, statsRes){
+    console.log(characterRes);
+  }
 
-  pool.query(sql, function (err, result) {
+  /*pool.query(sql, function (err, result) {
 
     if (err) {
       console.log("Error in query: ");
@@ -139,7 +142,7 @@ app.get('/viewCharacters', function (req, res) {
       dbResult: html
     }
     res.render('pages/viewCharacters', params);
-  });
+  });*/
 });
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
