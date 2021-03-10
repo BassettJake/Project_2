@@ -35,8 +35,16 @@ app.get('/viewCharacters', function (req, res) {
     }
     console.log("Back from DB with result: ");
     console.log(result.rows);
+
+    var html = '<ul>';
+    for(i in result.rows){
+      html += '<li>' + result.rows[i] + '</li>';
+    }
+
+    html += '</ul>';
+
     var params = {
-      dbResult: result.rows
+      dbResult: html
     }
 
     res.render('pages/viewCharacters', params);
