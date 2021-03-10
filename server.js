@@ -66,6 +66,7 @@ console.log(results);
 
           return gear.rows;
         });
+        console.log(resultsGear);
         for (g in resultsGear) {
           for (gr in resultsGear[g]) {
             if (gr == 1) {
@@ -92,6 +93,7 @@ console.log(results);
 
           return stats.rows;
         });
+        console.log(resultsStats);
         for (s in resultsStats) {
           for (sr in resultsStats[g]) {
             if (sr == 1) {
