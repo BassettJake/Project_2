@@ -36,9 +36,12 @@ app.post('/viewCharacters', (req, res) => {
     var params = {
       dbResult: result.rows
     }
-    res.redirect('/viewCharacters')
+    res.redirect('/viewCharacters');
   });
 
+});
+app.get('/viewCharacters', function(req, res){
+  res.render('pages/viewCharacters');
 });
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
