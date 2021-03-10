@@ -37,19 +37,16 @@ app.get('/viewCharacters', function (req, res) {
     console.log(result.rows);
 
     var html = "";
-    for (i in result.rows) {
-      for (j in result.rows[i]) {
+    for(i in result.rows){
+      for(j in result.rows[i]){
         html += '<li>' + result.rows[i][j] + '</li>';
       }
     }
     html += '</ul>';
+    res.render('pages/viewCharacters', function(err, html){
 
-    res.writeHead(200, {
-      'Content-Type': 'text/html'
+      res.send(html)
     });
-    res.render('pages/viewCharacters');
-
-    res.end(html);
   });
 });
 app.use(express.static(path.join(__dirname, 'public')));
