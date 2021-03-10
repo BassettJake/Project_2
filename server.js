@@ -45,6 +45,7 @@ app.get('/viewCharacters', function (req, res) {
       console.log(result.rows);
       return result;
     });
+    console.log(cRes);
     return cRes;
   }
 
