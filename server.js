@@ -35,7 +35,8 @@ app.get('/viewCharacters', function (req, res) {
   buildHtml(characterRes, gearRes, statsRes);
 
   function getCharacters(sql) {
-    var cRes = pool.query(sql, function (err, result) {
+    var cRes;
+    pool.query(sql, function (err, result) {
       
       if (err) {
         console.log("Error in query: ");
@@ -43,7 +44,7 @@ app.get('/viewCharacters', function (req, res) {
       }
       console.log("Back from DB with result: ");
       console.log(result.rows);
-      return result;
+      cRes = result.rows;
     });
     console.log(cRes);
     return cRes;
