@@ -38,7 +38,7 @@ app.get('/viewCharacters', function (req, res) {
 
     return result.rows;
   });
-
+console.log(results);
   var html = '<section class="characterView">';
   for (i in results) {
     for (j in results[i]) {
