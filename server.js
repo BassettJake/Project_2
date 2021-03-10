@@ -32,8 +32,11 @@ app.post('/viewCharacters', (req, res) => {
       console.log(err);
     }
     console.log("Back from DB with result: ");
-    var params = result.rows;
-    res.render('pages/index');
+    console.log(result.rows);
+    var params = {
+      result: result.rows
+    }
+    res.render('pages/index', params);
     res.end();
   });
 
