@@ -40,6 +40,7 @@ app.get('/viewCharacters', function (req, res) {
     var html = '<section class="characterView">';
     for (i in results) {
       for (j in results[i]) {
+        console.log(i, j);
         //dont print out the id
         if (j == 1) {
           html += '<section class="characterHeader">' +
@@ -50,10 +51,10 @@ app.get('/viewCharacters', function (req, res) {
         } else if (j == 3) {
           html += '<span class="characterCS">' + results[i][j] + '</span>' +
             '</section></section>'; //close characterHeader and characterCS
-            console.log(3);
+
         } else if (j == 4) {
           var sqlGear = "SELECT * FROM gear WHERE gear.id = " + results[i][j];
-          console.log(sqlGear);
+
           pool.query(sqlGear, function (err, gear) {
 
             if (err) {
