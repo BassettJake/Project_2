@@ -22,7 +22,9 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.post('/viewCharacters', (req, res) => {
-
+  res.redirect('/viewCharacters');
+});
+app.get('/viewCharacters', function (req, res) {
   var sql = "SELECT * FROM characters";
 
   pool.query(sql, function (err, result) {
@@ -36,12 +38,9 @@ app.post('/viewCharacters', (req, res) => {
     var params = {
       dbResult: result.rows
     }
-    res.redirect('/viewCharacters');
-  });
 
-});
-app.get('/viewCharacters', function(req, res){
-  res.render('pages/viewCharacters');
+    res.render('pages/viewCharacters', params);
+  });
 });
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
