@@ -53,9 +53,9 @@ console.log(results);
         html += '<span class="characterCS">' + results[i][j] + '</span>' +
           '</section></section>'; //close characterHeader and characterCS
       } else if (j == 4) {
-        var sql = "SELECT * FROM gear WHERE gear.id = " + results[i][j];
+        var sqlGear = "SELECT * FROM gear WHERE gear.id = " + results[i][j];
 
-        var resultsGear = pool.query(sql, function (err, gear) {
+        var resultsGear = pool.query(sqlGear, function (err, gear) {
 
           if (err) {
             console.log("Error in query: ");
@@ -80,9 +80,9 @@ console.log(results);
           }
         }
       } else if (j == 5) {
-        var sql = "SELECT * FROM stats WHERE stats.id = " + results[i][j];
+        var sqlStats = "SELECT * FROM stats WHERE stats.id = " + results[i][j];
 
-        var resultsStats = pool.query(sql, function (err, stats) {
+        var resultsStats = pool.query(sqlStats, function (err, stats) {
 
           if (err) {
             console.log("Error in query: ");
