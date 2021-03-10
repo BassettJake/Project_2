@@ -52,7 +52,7 @@ app.get('/viewCharacters', function (req, res) {
             '</section></section>'; //close characterHeader and characterCS
         } else if (j == 4) {
           var sqlGear = "SELECT * FROM gear WHERE gear.id = " + results[i][j];
-  
+  console.log(sqlGear);
           pool.query(sqlGear, function (err, gear) {
   
             if (err) {
