@@ -52,9 +52,9 @@ app.get('/viewCharacters', function (req, res) {
             '</section></section>'; //close characterHeader and characterCS
         } else if (j == 4) {
           var sqlGear = "SELECT * FROM gear WHERE gear.id = " + results[i][j];
-  console.log(sqlGear);
+          console.log(sqlGear);
           pool.query(sqlGear, function (err, gear) {
-  
+
             if (err) {
               console.log("Error in query: ");
               console.log(err);
@@ -72,7 +72,7 @@ app.get('/viewCharacters', function (req, res) {
                   html += '<span class="characterGear">' + resultsGear[g][gr] + '</span>' +
                     '</section>'; //close characterGear
                 }
-    
+
               }
             }
           });
@@ -80,7 +80,7 @@ app.get('/viewCharacters', function (req, res) {
         } else if (j == 5) {
           var sqlStats = "SELECT * FROM stats WHERE stats.id = " + results[i][j];
           pool.query(sqlStats, function (err, stats) {
-  
+
             if (err) {
               console.log("Error in query: ");
               console.log(err);
@@ -102,7 +102,7 @@ app.get('/viewCharacters', function (req, res) {
                   html += '<span class="characterStat">' + resultsStats[s][sr] + '</span>' +
                     '</section>'; //close characterStats
                 }
-    
+
               }
             }
           });
@@ -114,14 +114,11 @@ app.get('/viewCharacters', function (req, res) {
       }
     }
     html += '</section>'; //close characterView
-
+    var params = {
+      dbResult: html
+    }
+    res.render('pages/viewCharacters', params);
   });
-
-
-  var params = {
-    dbResult: html
-  }
-  res.render('pages/viewCharacters', params);
 });
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
