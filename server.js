@@ -45,7 +45,6 @@ app.get('/viewCharacters', function (req, res) {
       console.log(result.rows);
       return result;
     });
-    console.log("HERE ONE");
     return cRes;
   }
 
@@ -88,7 +87,7 @@ app.get('/viewCharacters', function (req, res) {
   }
 
   function buildHtml(characterRes, gearRes, statsRes) {
-    console.log("HERE TWO");
+    console.log(characterRes, gearRes, statsRes);
   }
   var params = {
     dbResult: "testing"
