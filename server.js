@@ -47,7 +47,7 @@ app.get('/viewCharacters', function (req, res) {
 
     res.render('pages/viewCharacters');
     res.writeHead(200, {'Content-Type': 'text/html'});
-    res.send(html);
+    res.write(html);
     res.end();
   });
 });
