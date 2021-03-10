@@ -43,11 +43,11 @@ app.get('/viewCharacters', function (req, res) {
       console.log("Back from DB with result: ");
       console.log(result.rows);
     });
-    console.log(result);
+    console.log(1);
     return result;
   }
   function buildHtml(characterRes, gearRes, statsRes){
-    console.log(characterRes);
+    console.log(2);
   }
 
   /*pool.query(sql, function (err, result) {
