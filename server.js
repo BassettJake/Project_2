@@ -40,7 +40,6 @@ app.get('/viewCharacters', function (req, res) {
     var html = '<section class="characterView">';
     for (i in results) {
       for (j in results[i]) {
-        console.log(i, j);
         //dont print out the id
         if (j == 'name') {
           html += '<section class="characterHeader">' +
@@ -74,7 +73,7 @@ app.get('/viewCharacters', function (req, res) {
                   html += '<span class="characterGear">' + resultsGear[g][gr] + '</span>' +
                     '</section>'; //close characterGear
                 }
-
+console.log(html);
               }
             }
           });
