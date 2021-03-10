@@ -36,7 +36,7 @@ app.post('/viewCharacters', (req, res) => {
     var params = {
       result: result.rows
     }
-    res.render('pages/index', params);
+    res.render('pages/', params);
     res.end();
   });
 
