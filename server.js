@@ -26,8 +26,8 @@ app.post('/viewCharacters', (req, res) => {
 });
 app.get('/viewCharacters', function (req, res) {
   const sqlCharacters = "SELECT * FROM characters";
-  const sqlGear = "SELECT * FROM gear WHERE gear.id = " + results[i][j];
-  const sqlStats = "SELECT * FROM stats WHERE stats.id = " + results[i][j];
+  //const sqlGear = "SELECT * FROM gear WHERE gear.id = " + results[i][j];
+  //const sqlStats = "SELECT * FROM stats WHERE stats.id = " + results[i][j];
 
   let characterRes = getCharacters(sqlCharacters);
   let gearRes = "nothing"; //getGear(sqlGear, characterRes);
@@ -43,11 +43,11 @@ app.get('/viewCharacters', function (req, res) {
       console.log("Back from DB with result: ");
       console.log(result.rows);
     });
-    console.log(1);
+    console.log("HERE ONE");
     return result;
   }
   function buildHtml(characterRes, gearRes, statsRes){
-    console.log(2);
+    console.log("HERE TWO");
   }
 
   /*pool.query(sql, function (err, result) {
