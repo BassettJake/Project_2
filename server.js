@@ -19,7 +19,7 @@ pool.query(sql, function(err, result){
     console.log(err);
   }
   console.log("Back from DB with result: ");
-  console.log(result.rows);
+  console.log(result);
 });
 
 const app = express();
