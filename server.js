@@ -36,16 +36,16 @@ app.get('/viewCharacters', function (req, res) {
     console.log("Back from DB with result: ");
     console.log(result.rows);
 
-    var html = "";
+    var h = "";
     for(i in result.rows){
       for(j in result.rows[i]){
-        html += '<li>' + result.rows[i][j] + '</li>';
+        h += '<li>' + result.rows[i][j] + '</li>';
       }
     }
-    html += '</ul>';
-    res.render('pages/viewCharacters', function(err, html){
-console.log(html);
-      res.send(html)
+    h += '</ul>';
+    res.render('pages/viewCharacters', function(err, h){
+console.log(h);
+      res.send(h)
     });
   });
 });
