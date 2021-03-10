@@ -46,7 +46,7 @@ app.get('/viewCharacters', function (req, res) {
     var params = {
       dbResult: html
     }
-    res.render('pages/viewCharacters', params);
+    res.render('pages/viewCharacters');
   });
 });
 app.use(express.static(path.join(__dirname, 'public')));
