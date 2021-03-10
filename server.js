@@ -33,6 +33,8 @@ app.post('/viewCharacters', (req, res) => {
     }
     console.log("Back from DB with result: ");
     var params = result.rows;
+    res.render('pages/index');
+    res.end();
   });
 
 });
