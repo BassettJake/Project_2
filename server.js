@@ -50,6 +50,7 @@ app.get('/viewCharacters', function (req, res) {
         } else if (j == 3) {
           html += '<span class="characterCS">' + results[i][j] + '</span>' +
             '</section></section>'; //close characterHeader and characterCS
+            console.log(3);
         } else if (j == 4) {
           var sqlGear = "SELECT * FROM gear WHERE gear.id = " + results[i][j];
           console.log(sqlGear);
