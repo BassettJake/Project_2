@@ -44,7 +44,7 @@ app.get('/viewCharacters', function (req, res) {
     }
     html += '</ul>';
     res.render('pages/viewCharacters', function(err, html){
-
+console.log(html);
       res.send(html)
     });
   });
