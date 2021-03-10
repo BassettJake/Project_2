@@ -28,10 +28,6 @@ app.use(express.urlencoded({
 }));
 app.post('/viewCharacters', (req, res) => {
 
-  res.send("test");
-  res.render('pages/index', params);
-  res.end();
-
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function(){
     if(this.readyState == 4 && this.status == 200){
