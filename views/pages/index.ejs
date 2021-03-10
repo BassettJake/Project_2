@@ -11,7 +11,7 @@
 <body>
   <main>
     <form class="form" action="/viewCharacters" method="post">
-      <input class="button gold_button" id="submitButton" type="submit" name="submit" value="View Characters">
+      <input class="button gold_button" id="submitButton" onclick="viewCharacters()" type="submit" name="submit" value="View Characters">
     </form>
     <form class="form" action="/createCharacter" method="post">
       <input class="button gold_button" id="submitButton" type="submit" name="submit" value="Create Character">
@@ -22,7 +22,16 @@
 
 <script>
 
-  
+  function viewCharacters(){
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log("success");
+    }
+  };
+  xhttp.open("GET", "pages/viewCharacters");
+  xhttp.send();
+  }
 
 </script>
 

@@ -2,25 +2,20 @@ require('dotenv').config();
 
 const express = require('express');
 const path = require('path');
-const { Pool } = require('pg');
+const {
+  Pool
+} = require('pg');
 const PORT = process.env.PORT || 5000;
 
 const connectionString = process.env.DATABASE_URL;
 
-const pool = new Pool({connectionString: connectionString, ssl:{rejectUnauthorized:false}});
-pool.connect();
-
-var sql = "SELECT * FROM stats";
-
-pool.query(sql, function(err, result){
-
-  if(err){
-    console.log("Error in query: ");
-    console.log(err);
+const pool = new Pool({
+  connectionString: connectionString,
+  ssl: {
+    rejectUnauthorized: false
   }
-  console.log("Back from DB with result: ");
-  console.log(result.rows);
 });
+pool.connect();
 
 const app = express();
 app.use(express.urlencoded({
@@ -28,14 +23,18 @@ app.use(express.urlencoded({
 }));
 app.post('/viewCharacters', (req, res) => {
 
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function(){
-    if(this.readyState == 4 && this.status == 200){
-      console.log("success");
+  var sql = "SELECT * FROM characters";
+
+  pool.query(sql, function (err, result) {
+
+    if (err) {
+      console.log("Error in query: ");
+      console.log(err);
     }
-  };
-  xhttp.open("GET", "pages/viewCharacters");
-  xhttp.send();
+    console.log("Back from DB with result: ");
+    var params = result.rows;
+  });
+
 });
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
