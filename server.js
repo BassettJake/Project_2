@@ -35,23 +35,25 @@ app.get('/viewCharacters', function (req, res) {
   buildHtml(characterRes, gearRes, statsRes);
 
   function getCharacters(sql) {
-    pool.query(sql, function (err, result) {
+    var cRes = pool.query(sql, function (err, result) {
+      
       if (err) {
         console.log("Error in query: ");
         console.log(err);
       }
       console.log("Back from DB with result: ");
       console.log(result.rows);
+      return result;
     });
     console.log("HERE ONE");
-    return result;
+    return cRes;
   }
 
   function getGear(sql, characterRes) {
     for (i in characterRes) {
       for (j in characterRes[i]) {
         sql = sql + characterRes[i][j];
-        pool.query(sql, function (err, result) {
+        var gRes = pool.query(sql, function (err, result) {
 
           if (err) {
             console.log("Error in query: ");
@@ -59,8 +61,9 @@ app.get('/viewCharacters', function (req, res) {
           }
           console.log("Back from DB with result: ");
           console.log(result.rows);
+          return result;
         });
-        return result;
+        return gRes;
       }
     }
   }
@@ -69,7 +72,7 @@ app.get('/viewCharacters', function (req, res) {
     for (i in characterRes) {
       for (j in characterRes[i]) {
         sql = sql + characterRes[i][j];
-        pool.query(sql, function (err, result) {
+        var sRes = pool.query(sql, function (err, result) {
 
           if (err) {
             console.log("Error in query: ");
@@ -77,8 +80,9 @@ app.get('/viewCharacters', function (req, res) {
           }
           console.log("Back from DB with result: ");
           console.log(result.rows);
+          return result;
         });
-        return result;
+        return sRes;
       }
     }
   }
