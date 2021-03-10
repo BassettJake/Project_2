@@ -66,7 +66,7 @@ return result;
         } else if (j == 'gear_id') {
           var sqlGear = "SELECT * FROM gear WHERE gear.id = " + results[i][j];
 
-          pool.query(sqlGear, function (err, gear) {
+           var test = pool.query(sqlGear, function (err, gear) {
 
             if (err) {
               console.log("Error in query: ");
@@ -88,8 +88,9 @@ return result;
 
               }
             }
+            return html;
           });
-
+          console.log(test);
         } else if (j == 'stats_id') {
           console.log(html);
           var sqlStats = "SELECT * FROM stats WHERE stats.id = " + results[i][j];
