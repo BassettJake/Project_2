@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5000;
 
 const connectionString = process.env.DATABASE_URL;
 
-const pool = new Pool({connectionString: connectionString});
+const pool = new Pool({connectionString: connectionString, ssl:{rejectUnauthorized:false}});
 
 var sql = "SELECT * FROM stats";
 
