@@ -80,8 +80,9 @@ console.log(results);
           }
         }
       } else if (j == 5) {
+        console.log("HERE1");
         var sqlStats = "SELECT * FROM stats WHERE stats.id = ";
-console.log("HERE" + sqlStats);
+console.log("HERE2");
         var resultsStats = pool.query(sqlStats, function (err, stats) {
 
           if (err) {
