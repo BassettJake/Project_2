@@ -73,12 +73,13 @@ app.get('/viewCharacters', function (req, res) {
                   html += '<span class="characterGear">' + resultsGear[g][gr] + '</span>' +
                     '</section>'; //close characterGear
                 }
-console.log(html);
+
               }
             }
           });
 
         } else if (j == 'stats_id') {
+          console.log(html);
           var sqlStats = "SELECT * FROM stats WHERE stats.id = " + results[i][j];
           pool.query(sqlStats, function (err, stats) {
 
