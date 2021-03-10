@@ -35,7 +35,7 @@ app.get('/viewCharacters', function (req, res) {
     }
     console.log("Back from DB with result: ");
     console.log(result.rows);
-return result;
+    return result;
   });
   console.log(r);
 
@@ -66,33 +66,38 @@ return result;
         } else if (j == 'gear_id') {
           var sqlGear = "SELECT * FROM gear WHERE gear.id = " + results[i][j];
 
-           var test = pool.query(sqlGear, function (err, gear) {
+          var test = getGear();
 
-            if (err) {
-              console.log("Error in query: ");
-              console.log(err);
-            }
-            console.log("Back from DB with result: ");
-            console.log(gear.rows);
+            function getGear() {
+              var htmlGear = '';
+              pool.query(sqlGear, function (err, gear) {
 
-            var resultsGear = gear.rows;
-            for (g in resultsGear) {
-              for (gr in resultsGear[g]) {
-                if (gr == 'weapon') {
-                  html += '<section id="characterGear">' +
-                    '<span class="characterGear">' + resultsGear[g][gr] + '</span>';
-                } else if (gr == 'armor') {
-                  html += '<span class="characterGear">' + resultsGear[g][gr] + '</span>' +
-                    '</section>'; //close characterGear
+                if (err) {
+                  console.log("Error in query: ");
+                  console.log(err);
                 }
+                console.log("Back from DB with result: ");
+                console.log(gear.rows);
 
-              }
+                var resultsGear = gear.rows;
+                for (g in resultsGear) {
+                  for (gr in resultsGear[g]) {
+                    if (gr == 'weapon') {
+                      htmlGear += '<section id="characterGear">' +
+                        '<span class="characterGear">' + resultsGear[g][gr] + '</span>';
+                    } else if (gr == 'armor') {
+                      htmlGear += '<span class="characterGear">' + resultsGear[g][gr] + '</span>' +
+                        '</section>'; //close characterGear
+                    }
+
+                  }
+                }
+                return htmlGear;
+              });
+              return htmlGear;
             }
-            return html;
-          });
           console.log(test);
         } else if (j == 'stats_id') {
-          console.log(html);
           var sqlStats = "SELECT * FROM stats WHERE stats.id = " + results[i][j];
           pool.query(sqlStats, function (err, stats) {
 
