@@ -38,7 +38,12 @@ app.get('/viewCharacters', function (req, res) {
 
     var html = '<ul>';
     for(i in result.rows){
-      html += '<li>' + result.rows[i] + '</li>';
+      console.log(result.rows[i]);
+      for(j in result.rows[i]){
+        console.log(result.rows[i][j]);
+        html += '<li>' + result.rows[i][j] + '</li>';
+      }
+
     }
 
     html += '</ul>';
