@@ -29,13 +29,12 @@ app.get('/viewCharacters', function (req, res) {
   const sqlGear = "SELECT * FROM gear WHERE gear.id = ";
   const sqlStats = "SELECT * FROM stats WHERE stats.id = ";
 
-  let characterRes =  getCharacters(sqlCharacters);
+  let characterRes = getCharacters(sqlCharacters);
   let gearRes = getGear(sqlGear, characterRes);
   let statsRes = getStats(sqlStats, characterRes);
   buildHtml(characterRes, gearRes, statsRes);
-
+  console.log(0);
   function getCharacters(sql) {
-    let cRes;
     pool.query(sql, function (err, result) {
       
       if (err) {
@@ -44,16 +43,16 @@ app.get('/viewCharacters', function (req, res) {
       }
       console.log("Back from DB with result: ");
       console.log(result.rows);
-      cRes = result.rows;
+      console.log(1);
     });
-    console.log(cRes);
+    console.log(2);
     }
 
   function getGear(sql, characterRes) {
     for (i in characterRes) {
       for (j in characterRes[i]) {
         sql = sql + characterRes[i][j];
-        var gRes = pool.query(sql, function (err, result) {
+        pool.query(sql, function (err, result) {
 
           if (err) {
             console.log("Error in query: ");
@@ -61,9 +60,9 @@ app.get('/viewCharacters', function (req, res) {
           }
           console.log("Back from DB with result: ");
           console.log(result.rows);
-          return result;
+          console.log(3);
         });
-        return gRes;
+        console.log(4);
       }
     }
   }
@@ -72,7 +71,7 @@ app.get('/viewCharacters', function (req, res) {
     for (i in characterRes) {
       for (j in characterRes[i]) {
         sql = sql + characterRes[i][j];
-        var sRes = pool.query(sql, function (err, result) {
+        pool.query(sql, function (err, result) {
 
           if (err) {
             console.log("Error in query: ");
@@ -80,15 +79,15 @@ app.get('/viewCharacters', function (req, res) {
           }
           console.log("Back from DB with result: ");
           console.log(result.rows);
-          return result;
+          console.log(5);
         });
-        return sRes;
+        console.log(6);
       }
     }
   }
 
   function buildHtml(characterRes, gearRes, statsRes) {
-    console.log(characterRes, gearRes, statsRes);
+console.log(7);
   }
   var params = {
     dbResult: "testing"
