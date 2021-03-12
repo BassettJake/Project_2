@@ -6,7 +6,9 @@ const path = require('path');
 const {
   Pool
 } = require('pg');
-const { allowedNodeEnvironmentFlags } = require('process');
+const {
+  allowedNodeEnvironmentFlags
+} = require('process');
 const PORT = process.env.PORT || 5000;
 
 const connectionString = process.env.DATABASE_URL;
@@ -25,6 +27,13 @@ app.use(express.urlencoded({
 }));
 app.post('/viewCharacters', (req, res) => {
   console.log("???????????????????");
+});
+
+app.get('viewCharacters', (req, res) => {
+  var params = {
+    dbResult: "testing"
+  }
+  res.render('pages/viewCharacters', params);
 });
 
 app.use(bodyParser.json());
