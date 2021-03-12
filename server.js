@@ -32,11 +32,10 @@ const charRes = function(callback){
     console.log(result.rows);
     callback(null, result.rows);
   });
-  pool.end();
 }
 
 app.get('/viewCharacters', (req, res) => {
-charRes(function(err, result){console.log(err, result)});
+charRes(function(err, result){return result});
   res.send(charRes);
 
 
