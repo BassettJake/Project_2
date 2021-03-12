@@ -33,8 +33,21 @@ app.get('/viewCharacters', (req, res) => {
       console.log(err);
     }
     console.log("Query " + sqlCharacters + " successful");
-    console.log(charRes.rows);
-    console.log(charRes.rows[0]);
+    
+    //get gear
+    for(i in charRes.rows){
+      var sqlG = sqlGear + charRes.rows[i].id;
+      pool.query(sqlG, function(err, gearRes){
+        if (err) {
+          console.log("Error in query: ");
+          console.log(err);
+        }
+        console.log("Query " + sqlGear + " successful");
+        res.send(charRes.rows[i], gearRes.rows);
+      });
+    }
+
+
     console.log(charRes.rows[0]['id']);
     res.send(charRes.rows);
   });
