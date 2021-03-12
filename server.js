@@ -22,17 +22,24 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-app.get('/viewCharacters', (req, res) => {
-
-  const charRes = pool.query("SELECT * FROM characters", function (err, result) {
+const charRes = function(callback){
+  pool.query("SELECT * FROM characters", function (err, result) {
     if (err) {
       console.log("Error in query: ");
       console.log(err);
     }
     console.log("Back from DB with result: ");
     console.log(result.rows);
+    callback(null, result.rows);
   });
+  pool.end();
+}
+
+app.get('/viewCharacters', (req, res) => {
+charRes(function(err, result){console.log(err, result)});
   res.send(charRes);
+
+
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
