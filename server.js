@@ -29,25 +29,23 @@ app.get('/viewCharacters', function (req, res) {
   const sqlGear = "SELECT * FROM gear WHERE gear.id = ";
   const sqlStats = "SELECT * FROM stats WHERE stats.id = ";
 
-  let characterRes = getCharacters(sqlCharacters);
+  let getCharacters = () => pool.query(sql, function (err, result) {
+
+    if (err) {
+      console.log("Error in query: ");
+      console.log(err);
+    }
+    console.log("Back from DB with result: ");
+    console.log(result.rows);
+    console.log(1);
+  }).then(result => result.rows);
+console.log(getCharacters);
+
   let gearRes = getGear(sqlGear, getCharacters(sqlCharacters));
   let statsRes = getStats(sqlStats, characterRes);
   buildHtml(characterRes, gearRes, statsRes);
   console.log(0);
-  function getCharacters(sql) {
-    var rChar = pool.query(sql, function (err, result) {
-      
-      if (err) {
-        console.log("Error in query: ");
-        console.log(err);
-      }
-      console.log("Back from DB with result: ");
-      console.log(result.rows);
-      console.log(1);
-    });
-    console.log(2, rChar);
-    return rChar;
-    }
+
 
   function getGear(sql, characterRes) {
     for (i in characterRes) {
@@ -88,7 +86,7 @@ app.get('/viewCharacters', function (req, res) {
   }
 
   function buildHtml(characterRes, gearRes, statsRes) {
-console.log(7);
+    console.log(7);
   }
   var params = {
     dbResult: "testing"
