@@ -33,9 +33,7 @@ app.get('/viewCharacters', (req, res) => {
       console.log(err);
     }
     console.log("Query " + sqlCharacters + " successful");
-    console.log(charRes);
-    console.log(charRes[0]);
-    console.log(charRes[0]['id']);
+
     res.send(charRes);
   });
 });
