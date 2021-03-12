@@ -23,16 +23,44 @@ app.use(express.urlencoded({
 }));
 
 app.get('/viewCharacters', (req, res) => {
+  const sqlCharacters = "SELECT * FROM characters";
+  const sqlGear = "SELECT * FROM gear WHERE gear.id = ";
+  const sqlStats = "SELECT * FROM stats WHERE stats.id = ";
 
-  pool.query("SELECT * FROM characters", function (err, result) {
+  pool.query(sqlCharacters, function (err, charRes) {
     if (err) {
       console.log("Error in query: ");
       console.log(err);
     }
-    console.log("Back from DB with result: ");
-    console.log(result.rows);
-    res.send(result.rows);
-  });
+    console.log("Query " + sqlCharacters + " successful");
+    for (i in charRes) {
+      for (j in charRes[i]) {
+        var sqlG = sqlGear + charRes[i][j];
+        pool.query(sqlG, function (err, gearRes) {
+
+          if (err) {
+            console.log("Error in query: ");
+            console.log(err);
+          }
+          console.log("Query " + sqlG + " successful");
+          for (i in charRes) {
+            for (j in charRes[i]) {
+              var sqlS = sqlStats + charRes[i][j];
+              pool.query(sqlS, function (err, statsRes) {
+      
+                if (err) {
+                  console.log("Error in query: ");
+                  console.log(err);
+                }
+                console.log("Query " + sqlS + " successful");
+                res.send(charRes, gearRes, statsRes);
+              });
+            }
+          }
+        });
+      }
+    }
+
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
