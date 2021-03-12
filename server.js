@@ -29,7 +29,7 @@ app.post('/viewCharacters', (req, res) => {
   console.log("???????????????????");
 });
 
-app.get('viewCharacters', (req, res) => {
+app.get('/viewCharacters', (req, res) => {
   var params = {
     dbResult: "testing"
   }
