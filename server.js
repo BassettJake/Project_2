@@ -35,9 +35,9 @@ const charRes = function(callback){
 }
 
 app.get('/viewCharacters', (req, res) => {
-charRes(function(err, result){return result});
-console.log("HERE", charRes, charRes.result);
-  res.send(charRes);
+let characterInfo = charRes(function(err, result){return result});
+console.log("//////////////",characterInfo);
+  res.send(characterInfo);
 
 
 });
