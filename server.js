@@ -29,19 +29,25 @@ app.get('/viewCharacters', function (req, res) {
   const sqlGear = "SELECT * FROM gear WHERE gear.id = ";
   const sqlStats = "SELECT * FROM stats WHERE stats.id = ";
 
-  let characterRes = await pool.query(sql, function (err, result) {
-      
-    if (err) {
-      console.log("Error in query: ");
-      console.log(err);
-    }
-    console.log("Back from DB with result: ");
-    console.log(result.rows);
-  });
+  let characterRes =  getCharacters(sqlCharacters);
   let gearRes = getGear(sqlGear, characterRes);
   let statsRes = getStats(sqlStats, characterRes);
   buildHtml(characterRes, gearRes, statsRes);
 
+  function getCharacters(sql) {
+    let cRes;
+    pool.query(sql, function (err, result) {
+      
+      if (err) {
+        console.log("Error in query: ");
+        console.log(err);
+      }
+      console.log("Back from DB with result: ");
+      console.log(result.rows);
+      cRes = result.rows;
+    });
+    console.log(cRes);
+    }
 
   function getGear(sql, characterRes) {
     for (i in characterRes) {
