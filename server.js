@@ -33,33 +33,8 @@ app.get('/viewCharacters', (req, res) => {
       console.log(err);
     }
     console.log("Query " + sqlCharacters + " successful");
-    for (i in charRes) {
-      for (j in charRes[i]) {
-        var sqlG = sqlGear + charRes[i][j];
-        pool.query(sqlG, function (err, gearRes) {
+    console.log(charRes[0].id);
 
-          if (err) {
-            console.log("Error in query: ");
-            console.log(err);
-          }
-          console.log("Query " + sqlG + " successful");
-          for (i in charRes) {
-            for (j in charRes[i]) {
-              var sqlS = sqlStats + charRes[i][j];
-              pool.query(sqlS, function (err, statsRes) {
-
-                if (err) {
-                  console.log("Error in query: ");
-                  console.log(err);
-                }
-                console.log("Query " + sqlS + " successful");
-                res.send(charRes, gearRes, statsRes);
-              });
-            }
-          }
-        });
-      }
-    }
   });
 });
 app.use(express.static(path.join(__dirname, 'public')));
