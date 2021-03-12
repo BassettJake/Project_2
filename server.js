@@ -24,7 +24,7 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.post('/viewCharacters', (req, res) => {
-  console.log("HERE");
+  console.log("???????????????????");
 });
 
 app.use(bodyParser.json());
