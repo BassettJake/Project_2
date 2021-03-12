@@ -24,75 +24,15 @@ app.use(express.urlencoded({
 app.post('/viewCharacters', (req, res) => {
   res.redirect('/viewCharacters');
 });
+
 app.get('/viewCharacters', function (req, res) {
-  const sqlCharacters = "SELECT * FROM characters";
-  const sqlGear = "SELECT * FROM gear WHERE gear.id = ";
-  const sqlStats = "SELECT * FROM stats WHERE stats.id = ";
 
-  let getCharacters = () => pool.query(sql, function (err, result) {
-
-    if (err) {
-      console.log("Error in query: ");
-      console.log(err);
-    }
-    console.log("Back from DB with result: ");
-    console.log(result.rows);
-    console.log(1);
-  }).then(result => result.rows);
-console.log("HERE", getCharacters);
-
-  let gearRes = getGear(sqlGear, getCharacters(sqlCharacters));
-  let statsRes = getStats(sqlStats, characterRes);
-  buildHtml(characterRes, gearRes, statsRes);
-  console.log(0);
-
-
-  function getGear(sql, characterRes) {
-    for (i in characterRes) {
-      for (j in characterRes[i]) {
-        sql = sql + characterRes[i][j];
-        pool.query(sql, function (err, result) {
-
-          if (err) {
-            console.log("Error in query: ");
-            console.log(err);
-          }
-          console.log("Back from DB with result: ");
-          console.log(result.rows);
-          console.log(3);
-        });
-        console.log(4);
-      }
-    }
-  }
-
-  function getStats(sql, characterRes) {
-    for (i in characterRes) {
-      for (j in characterRes[i]) {
-        sql = sql + characterRes[i][j];
-        pool.query(sql, function (err, result) {
-
-          if (err) {
-            console.log("Error in query: ");
-            console.log(err);
-          }
-          console.log("Back from DB with result: ");
-          console.log(result.rows);
-          console.log(5);
-        });
-        console.log(6);
-      }
-    }
-  }
-
-  function buildHtml(characterRes, gearRes, statsRes) {
-    console.log(7);
-  }
   var params = {
     dbResult: "testing"
   }
   res.render('pages/viewCharacters', params);
 });
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
