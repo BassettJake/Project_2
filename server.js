@@ -24,28 +24,14 @@ app.use(express.urlencoded({
 
 app.get('/viewCharacters', (req, res) => {
   const sqlCharacters = "SELECT * FROM characters";
-  const sqlGear = "SELECT * FROM gear WHERE gear.id = ";
-  const sqlStats = "SELECT * FROM stats WHERE stats.id = ";
 
-  pool.query(sqlCharacters, function (err, charRes) {
+  pool.query(sqlCharacters, function (err, results) {
     if (err) {
       console.log("Error in query: ");
       console.log(err);
     }
     console.log("Query " + sqlCharacters + " successful");
-    
-    //get gear
-    for(i in charRes.rows){
-      var sqlG = sqlGear + charRes.rows[i].id;
-      pool.query(sqlG, function(err, gearRes){
-        if (err) {
-          console.log("Error in query: ");
-          console.log(err);
-        }
-        console.log("Query " + sqlGear + " successful");
-        res.send(charRes.rows[i] + "," + gearRes.rows[0]);
-      });
-    }
+    res.send(results.rows);
   });
 });
 app.use(express.static(path.join(__dirname, 'public')));
