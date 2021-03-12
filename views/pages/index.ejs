@@ -15,9 +15,6 @@
 
       <button class="button gold_button" id="submitButton">View Characters</button>
 
-    <form class="form" action="/createCharacter">
-      <input class="button gold_button" id="submitButton" type="submit" name="submit" value="Create Character">
-    </form>
   </main>
 
 </body>
@@ -29,9 +26,23 @@ $(function(){
       url: '/viewCharacters',
       contentType: 'application/json',
       success: function(res){
+        var html = '';
         for(i in res){
-          console.log(res[i]);
+          html += '<section class="character">';
+          html += '<section class="char-name>' + res[i]['name'] + '</section>';
+          html += '<section class="char-class>' + res[i]['class'] + '</section>';
+          html += '<section class="char-species>' + res[i]['species'] + '</section>';
+          html += '<section class="char-backstory>' + res[i]['backstory'] + '</section>';
+          html += '<section class="char-weapon>' + res[i]['weapon'] + '</section>';
+          html += '<section class="char-armor>' + res[i]['armor'] + '</section>';
+          html += '<section class="char-strength>' + res[i]['strength'] + '</section>';
+          html += '<section class="char-agility>' + res[i]['agility'] + '</section>';
+          html += '<section class="char-wisdom>' + res[i]['wisdom'] + '</section>';
+          html += '<section class="char-intelligence>' + res[i]['intelligence'] + '</section>';
+          html += '</section>';
         }
+
+        document.getElementById("submitButton").innerHTML = html;
       }
     });
   });
