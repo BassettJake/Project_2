@@ -33,8 +33,10 @@ app.get('/viewCharacters', (req, res) => {
       console.log(err);
     }
     console.log("Query " + sqlCharacters + " successful");
-
-    res.send(charRes);
+    console.log(charRes.rows);
+    console.log(charRes.rows[0]);
+    console.log(charRes.rows[0]['id']);
+    res.send(charRes.rows);
   });
 });
 app.use(express.static(path.join(__dirname, 'public')));
