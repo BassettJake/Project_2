@@ -39,7 +39,7 @@ app.get('/viewCharacters', function (req, res) {
     console.log(result.rows);
     console.log(1);
   }).then(result => result.rows);
-console.log(getCharacters);
+console.log("HERE", getCharacters);
 
   let gearRes = getGear(sqlGear, getCharacters(sqlCharacters));
   let statsRes = getStats(sqlStats, characterRes);
