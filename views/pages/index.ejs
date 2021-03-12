@@ -13,7 +13,6 @@
   <main>
 
     <input class="button gold_button" id="submitButton" type="submit" value="View Characters">
-<section id="test">A test</section>
     <form class="form" action="/createCharacter" method="post">
       <input class="button gold_button" id="submitButton" type="submit" name="submit" value="Create Character">
     </form>
@@ -24,6 +23,7 @@
 <script>
 $(function(){
   $('submitButton').on('click', function(){
+    console.log("test");
     $.ajax({
       url: '/viewCharacters',
       contentType: 'application/json',

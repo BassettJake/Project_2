@@ -29,7 +29,7 @@ app.post('/viewCharacters', (req, res) => {
 app.get('/viewCharacters', (req, res) => {
 
   var postData = "testing";
-
+console.log("post");
   res.send(postData);
 
 });
