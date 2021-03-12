@@ -35,10 +35,7 @@ const charRes = function(callback){
 }
 
 app.get('/viewCharacters', (req, res) => {
-var characterInfo = charRes(function(err, result){return result});
-console.log("//////////////",characterInfo);
-  res.send(characterInfo);
-
+  res.send(charRes(function(err, result){return result}));
 
 });
 
