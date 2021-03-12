@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <title>Home</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
   <main>
 
-    <button class="button gold_button" id="submitButton" type="button" onclick="viewCharacters()">View Characters</button>
-
+    <input class="button gold_button" id="submitButton" type="submit" value="View Characters">
+<section id="test">A test</section>
     <form class="form" action="/createCharacter" method="post">
       <input class="button gold_button" id="submitButton" type="submit" name="submit" value="Create Character">
     </form>
@@ -21,19 +22,17 @@
 </body>
 
 <script>
-  function viewCharacters() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log("////////////////////////");
+$(function(){
+  $('submitButton').on('click', function(){
+    $.ajax({
+      url: '/viewCharacters',
+      contentType: 'application/json',
+      success: function(res){
+        console.log(res);
       }
-      else{
-        console.log("+++++++++++++++++");
-      }
-    };
-    xhttp.open("GET", "/viewCharacters", true);
-    xhttp.send();
-  }
+    });
+  });
+});
 </script>
 
 </html>

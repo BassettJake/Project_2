@@ -1,14 +1,10 @@
 require('dotenv').config();
-var bodyParser = require('body-parser');
 
 const express = require('express');
 const path = require('path');
 const {
   Pool
 } = require('pg');
-const {
-  allowedNodeEnvironmentFlags
-} = require('process');
 const PORT = process.env.PORT || 5000;
 
 const connectionString = process.env.DATABASE_URL;
@@ -25,6 +21,7 @@ const app = express();
 app.use(express.urlencoded({
   extended: true
 }));
+
 app.post('/viewCharacters', (req, res) => {
   console.log("???????????????????");
 });
@@ -33,10 +30,13 @@ app.get('/viewCharacters', (req, res) => {
   var params = {
     dbResult: "testing"
   }
-  res.render('pages/viewCharacters', params);
-});
 
-app.use(bodyParser.json());
+  var postData = "testing";
+
+  res.send(postData);
+  res.end();
+
+});
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
