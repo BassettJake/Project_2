@@ -22,17 +22,20 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-app.post('/viewCharacters', (req, res) => {
-  console.log("???????????????????");
-});
-
 app.get('/viewCharacters', (req, res) => {
 
-  var postData = "testing";
-console.log("post");
-  res.send(postData);
-
+  const charRes = pool.query("SELECT * FROM characters", function (err, result) {
+    if (err) {
+      console.log("Error in query: ");
+      console.log(err);
+    }
+    console.log("Back from DB with result: ");
+    console.log(result.rows);
+  });
 });
+
+res.send(charRes);
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
