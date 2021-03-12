@@ -46,10 +46,6 @@ app.get('/viewCharacters', (req, res) => {
         res.send(charRes.rows[i] + "," + gearRes.rows);
       });
     }
-
-
-    console.log(charRes.rows[0]['id']);
-    res.send(charRes.rows);
   });
 });
 app.use(express.static(path.join(__dirname, 'public')));
