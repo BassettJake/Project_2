@@ -5,6 +5,7 @@ const path = require('path');
 const {
   Pool
 } = require('pg');
+const { allowedNodeEnvironmentFlags } = require('process');
 const PORT = process.env.PORT || 5000;
 
 const connectionString = process.env.DATABASE_URL;
@@ -26,11 +27,10 @@ app.post('/viewCharacters', (req, res) => {
 });
 
 app.get('/viewCharacters', function (req, res) {
+console.log("THERE");
+  app.use(bodyParser.json());
 
-  var params = {
-    dbResult: "testing"
-  }
-  res.render('pages/viewCharacters', params);
+
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
