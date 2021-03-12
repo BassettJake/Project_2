@@ -27,14 +27,10 @@ app.post('/viewCharacters', (req, res) => {
 });
 
 app.get('/viewCharacters', (req, res) => {
-  var params = {
-    dbResult: "testing"
-  }
 
   var postData = "testing";
 
   res.send(postData);
-  res.end();
 
 });
 app.use(express.static(path.join(__dirname, 'public')));
