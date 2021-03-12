@@ -32,9 +32,8 @@ app.get('/viewCharacters', (req, res) => {
     console.log("Back from DB with result: ");
     console.log(result.rows);
   });
+  res.send(charRes);
 });
-
-res.send(charRes);
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
