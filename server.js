@@ -43,7 +43,8 @@ app.get('/viewCharacters', (req, res) => {
           console.log(err);
         }
         console.log("Query " + sqlGear + " successful");
-        res.send(charRes.rows[i] + "," + gearRes.rows);
+        console.log(charRes.rows[i], gearRes.rows, charRes.rows[i].id, gearRes.rows[i]);
+        res.send(charRes.rows[i]);
       });
     }
   });
