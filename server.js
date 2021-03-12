@@ -1,4 +1,5 @@
 require('dotenv').config();
+var bodyParser = require('body-parser');
 
 const express = require('express');
 const path = require('path');
@@ -23,16 +24,10 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.post('/viewCharacters', (req, res) => {
-  res.redirect('/viewCharacters');
+  console.log("HERE");
 });
 
-app.get('/viewCharacters', function (req, res) {
-console.log("THERE");
-  app.use(bodyParser.json());
-
-
-});
-
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

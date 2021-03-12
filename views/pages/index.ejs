@@ -28,15 +28,8 @@
         console.log("success");
       }
     };
-    var params = {
-      first: 'testing'
-    }
-    xhttp.open("GET", "/viewCharacters");
-    xhttp.onload = function(){
-      console.log("Test");
-    }
-    xtttp.setRequestHeader('Content-Type', 'application/json');
-    xhttp.send(JSON.stringify(params));
+    xhttp.open("POST", "/viewCharacters", true);
+    xhttp.send();
   }
 </script>
 
