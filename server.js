@@ -47,7 +47,7 @@ app.get('/viewCharacters', (req, res) => {
             for (j in charRes[i]) {
               var sqlS = sqlStats + charRes[i][j];
               pool.query(sqlS, function (err, statsRes) {
-      
+
                 if (err) {
                   console.log("Error in query: ");
                   console.log(err);
@@ -60,9 +60,8 @@ app.get('/viewCharacters', (req, res) => {
         });
       }
     }
-
+  });
 });
-
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
