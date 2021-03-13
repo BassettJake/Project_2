@@ -54,7 +54,22 @@ $(function () {
           html += '</section>';
         }
         html += '</section>';
-        document.getElementById("homeWrapper").innerHTML = html;
+        document.getElementsByTagName("main")[0].firstChild.innerHTML = html;
+      }
+    });
+  });
+});
+
+$(function () {
+  $('#headingButton').on('click', function () {
+    $.ajax({
+      url: '/home',
+      contentType: 'application/text',
+      success: function (res) {
+        var html = '<section id="homeWrapper">' +
+          '<button class="button goldButton" id="submitButton">View Characters</button>' +
+          '</section>';
+          document.getElementsByTagName("main")[0].firstChild.innerHTML = html;
       }
     });
   });
