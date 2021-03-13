@@ -71,7 +71,7 @@ $(function () {
         var html = '<section id="homeWrapper">' +
           '<button class="button goldButton" id="submitButton">View Characters</button>' +
           '</section>';
-          document.getElementById("homeWrapper").innerHTML = html;
+          document.getElementById("homeWrapper").outerHTML = html;
       }
     });
   });
