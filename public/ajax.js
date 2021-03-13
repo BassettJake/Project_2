@@ -69,13 +69,7 @@ $(function () {
         var html = '<section id="homeWrapper">' +
           '<button class="button goldButton" id="submitButton">View Characters</button>' +
           '</section>';
-          console.log(document.getElementsByTagName("main"));
-          console.log(document.getElementsByTagName("main").length);
-          console.log(document.getElementsByTagName("main")[0]);
-          console.log(document.getElementsByTagName("main")[0].children);
-          console.log(document.getElementsByTagName("main")[0].children[0]);
-          console.log(document.getElementsByTagName("main")[0].childNodes);
-          console.log(document.getElementsByTagName("main")[0].childNodes[0]);
+          document.getElementById("homeWrapper").innerHTML = html;
       }
     });
   });
