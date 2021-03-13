@@ -3,25 +3,25 @@
     font-family: 'Metamorphous';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/metamorphous-v11-latin-regular.eot');
+    src: url('../public/metamorphous-v11-latin-regular.eot');
     /* IE9 Compat Modes */
     src: local(''),
-        url('../fonts/metamorphous-v11-latin-regular.eot?#iefix') format('embedded-opentype'),
+        url('../public/metamorphous-v11-latin-regular.eot?#iefix') format('embedded-opentype'),
         /* IE6-IE8 */
-        url('../fonts/metamorphous-v11-latin-regular.woff2') format('woff2'),
+        url('../public/metamorphous-v11-latin-regular.woff2') format('woff2'),
         /* Super Modern Browsers */
-        url('../fonts/metamorphous-v11-latin-regular.woff') format('woff'),
+        url('../public/metamorphous-v11-latin-regular.woff') format('woff'),
         /* Modern Browsers */
-        url('../fonts/metamorphous-v11-latin-regular.ttf') format('truetype'),
+        url('../public/metamorphous-v11-latin-regular.ttf') format('truetype'),
         /* Safari, Android, iOS */
-        url('../fonts/metamorphous-v11-latin-regular.svg#Metamorphous') format('svg');
+        url('../public/metamorphous-v11-latin-regular.svg#Metamorphous') format('svg');
     /* Legacy iOS */
 }
 
 
 body {
     background-color: rgb(28, 28, 28);
-    font-family: unset;
+
     font-family: 'Metamorphous', cursive;
 }
 
