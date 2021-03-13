@@ -31,7 +31,7 @@ body {
     font-family: 'Metamorphous', cursive;
 }
 
-.homeWrapper {
+#homeWrapper {
     display: grid;
     justify-content: center;
 }
@@ -80,7 +80,7 @@ hr {
     color: #808080;
 }
 
-.headingButton{
+#headingButton{
     width: 100%;
     font-size: calc(12px + 1vw);
     font-weight: bold;

@@ -54,7 +54,7 @@ $(function () {
           html += '</section>';
         }
         html += '</section>';
-        document.getElementsByTagName("main")[0].firstChild.innerHTML = html;
+        document.getElementById("homeWrapper").innerHTML = html;
       }
     });
   });
@@ -69,7 +69,7 @@ $(function () {
         var html = '<section id="homeWrapper">' +
           '<button class="button goldButton" id="submitButton">View Characters</button>' +
           '</section>';
-          document.getElementsByTagName("main")[0].firstChild.innerHTML = html;
+          console.log(document.getElementsByTagName("main")[0].firstChild.innerHTML);
       }
     });
   });
