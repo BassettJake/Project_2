@@ -3,18 +3,18 @@
     font-family: 'Metamorphous';
     font-style: normal;
     font-weight: 400;
-    src: url('../public/metamorphous-v11-latin-regular.eot');
+    src: url('/metamorphous-v11-latin-regular.eot');
     /* IE9 Compat Modes */
     src: local(''),
-        url('../public/metamorphous-v11-latin-regular.eot?#iefix') format('embedded-opentype'),
+        url('/metamorphous-v11-latin-regular.eot?#iefix') format('embedded-opentype'),
         /* IE6-IE8 */
-        url('../public/metamorphous-v11-latin-regular.woff2') format('woff2'),
+        url('/metamorphous-v11-latin-regular.woff2') format('woff2'),
         /* Super Modern Browsers */
-        url('../public/metamorphous-v11-latin-regular.woff') format('woff'),
+        url('/metamorphous-v11-latin-regular.woff') format('woff'),
         /* Modern Browsers */
-        url('../public/metamorphous-v11-latin-regular.ttf') format('truetype'),
+        url('/metamorphous-v11-latin-regular.ttf') format('truetype'),
         /* Safari, Android, iOS */
-        url('../public/metamorphous-v11-latin-regular.svg#Metamorphous') format('svg');
+        url('/metamorphous-v11-latin-regular.svg#Metamorphous') format('svg');
     /* Legacy iOS */
 }
 
@@ -98,7 +98,7 @@ hr {
 
 .characterWrapper{
     display: grid;
-    grid-template-columns: repeat(1fr 1fr 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: .5vw;
     color: rgb(255, 215, 0);
 }
@@ -106,6 +106,14 @@ hr {
 .character{
     border: calc(1px + .1vw) solid #808080;
     padding: calc(1px + .4vw);
+}
+
+.labelWrap{
+    display: grid;
+}
+
+.label{
+    font-size: calc(12px + .1vw);
 }
 
 .top, .top-seg{
