@@ -72,7 +72,7 @@ $(function () {
       success: function (res) {
         var html = '<button class="button goldButton" id="submitButton">View Characters</button>'
           document.getElementById("homeWrapper").innerHTML = html;
-          document.getElementById("submitButton").addEventListener("click", viewChars());
+          document.getElementById("submitButton").addEventListener("click", viewChars);
       }
     });
   });
