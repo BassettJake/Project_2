@@ -68,10 +68,8 @@ $(function () {
       url: '/home',
       contentType: 'application/text',
       success: function (res) {
-        var html = '<section id="homeWrapper">' +
-          '<button class="button goldButton" id="submitButton">View Characters</button>' +
-          '</section>';
-          document.getElementById("homeWrapper").outerHTML = html;
+        var html = '<button class="button goldButton" id="submitButton">View Characters</button>'
+          document.getElementById("homeWrapper").innerHTML = html;
       }
     });
   });
