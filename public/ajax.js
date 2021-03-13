@@ -72,7 +72,10 @@ $(function () {
           console.log(document.getElementsByTagName("main"));
           console.log(document.getElementsByTagName("main").length);
           console.log(document.getElementsByTagName("main")[0]);
-          console.log(document.getElementsByTagName("main")[0].firstChild);
+          console.log(document.getElementsByTagName("main")[0].children);
+          console.log(document.getElementsByTagName("main")[0].children[0]);
+          console.log(document.getElementsByTagName("main")[0].childNodes);
+          console.log(document.getElementsByTagName("main")[0].childNodes[0]);
       }
     });
   });
