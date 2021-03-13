@@ -1,3 +1,9 @@
+input,
+button {
+    padding: 0;
+    font-family: unset;
+}
+
 /* metamorphous-regular - latin */
 @font-face {
     font-family: 'Metamorphous';
@@ -26,8 +32,8 @@ body {
 }
 
 .homeWrapper {
-    margin-left: 50%;
-    transform: translate(-50%);
+    display: grid;
+    justify-content: center;
 }
 
 #titleWrapper {
@@ -74,6 +80,20 @@ hr {
     color: #808080;
 }
 
+.headingButton{
+    width: 100%;
+    font-size: calc(12px + 1vw);
+    font-weight: bold;
+    color: rgb(255, 215, 0);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    line-height: 0;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    cursor: pointer;
+}
+
 .button {
     width: 100%;
     padding-top: 16.5%;
@@ -92,7 +112,7 @@ hr {
 }
 
 .goldButton{
-    background: url("../../assets/goldButton.jpg") no-repeat center center;
+    background: url("/assets/goldButton.jpg") no-repeat center center;
     background-size: cover;
 }
 
