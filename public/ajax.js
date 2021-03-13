@@ -1,5 +1,5 @@
 $(function () {
-  $('#submitButton').on('click', viewChar());
+  $('#submitButton').on('click', viewChars());
 });
 
 function viewChars(){
