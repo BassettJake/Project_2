@@ -21,6 +21,7 @@
 
 body {
     background-color: rgb(28, 28, 28);
+    font-family: unset;
     font-family: 'Metamorphous', cursive;
 }
 
