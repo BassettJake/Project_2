@@ -88,10 +88,11 @@ hr {
     align-items: center;
     display: flex;
     justify-content: center;
-    line-height: 0;
     padding-left: 1vw;
     padding-right: 1vw;
     cursor: pointer;
+    border: none;
+    font-size: calc(18px + 1vw);
 }
 
 .button {

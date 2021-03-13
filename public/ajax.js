@@ -69,7 +69,10 @@ $(function () {
         var html = '<section id="homeWrapper">' +
           '<button class="button goldButton" id="submitButton">View Characters</button>' +
           '</section>';
-          console.log(document.getElementsByTagName("main")[0].firstChild.innerHTML);
+          console.log(document.getElementsByTagName("main"));
+          console.log(document.getElementsByTagName("main").length);
+          console.log(document.getElementsByTagName("main")[0]);
+          console.log(document.getElementsByTagName("main")[0].firstChild);
       }
     });
   });
