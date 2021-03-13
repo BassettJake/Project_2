@@ -1,5 +1,6 @@
 $(function () {
   $('#submitButton').on('click', function () {
+    console.log("workiung");
     $.ajax({
       url: '/viewCharacters',
       contentType: 'application/json',
