@@ -1,6 +1,6 @@
 $(function () {
   $('#submitButton').on('click', function () {
-    console.log("workiung");
+    console.log("view");
     $.ajax({
       url: '/viewCharacters',
       contentType: 'application/json',
@@ -63,6 +63,7 @@ $(function () {
 
 $(function () {
   $('#headingButton').on('click', function () {
+    console.log("home");
     $.ajax({
       url: '/home',
       contentType: 'application/text',
