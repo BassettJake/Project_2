@@ -28,7 +28,7 @@ $(function(){
             html += '</section>';
           }
           html += '</section>';
-          document.getElementById("submitButton").innerHTML = html;
+          document.getElementById("homeWrapper").innerHTML = html;
         }
       });
     });
