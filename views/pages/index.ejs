@@ -7,46 +7,35 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <title>Home</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../../scripts/ajax.js"></script>
+  <link href="../../styles/spellbuilder.css" rel="stylesheet" type="text/css" media="screen">
 </head>
 
 <body>
+  <header>
+    <section id="titleWrapper">
+      <h1 id="headTitle">
+          <a href="#">Character Builder</a>
+      </h1>
+  </section>
+  <hr id="faintHr">
+  </header>
+<hr>
   <main>
-
-
-      <button class="button gold_button" id="submitButton">View Characters</button>
+    <section class="homeWrapper">
+      <button class="button goldButton" id="submitButton">View Characters</button>
+    </section>
 
   </main>
+<footer>
+<hr>  
+<section id="foot">
+    <span id="copyR">
+        &copy; All rights reserved.
+    </span>
+</section>
 
+</footer>
 </body>
-
-<script>
-$(function(){
-  $('#submitButton').on('click', function(){
-    $.ajax({
-      url: '/viewCharacters',
-      contentType: 'application/json',
-      success: function(res){
-        var html = '';
-        for(i in res){
-          html += '<section class="character">';
-          html += '<section class="char-name">' + res[i]['name'] + '</section>';
-          html += '<section class="char-class">' + res[i]['class'] + '</section>';
-          html += '<section class="char-species">' + res[i]['species'] + '</section>';
-          html += '<section class="char-backstory">' + res[i]['backstory'] + '</section>';
-          html += '<section class="char-weapon">' + res[i]['weapon'] + '</section>';
-          html += '<section class="char-armor">' + res[i]['armor'] + '</section>';
-          html += '<section class="char-strength">' + res[i]['strength'] + '</section>';
-          html += '<section class="char-agility">' + res[i]['agility'] + '</section>';
-          html += '<section class="char-wisdom">' + res[i]['wisdom'] + '</section>';
-          html += '<section class="char-intelligence">' + res[i]['intelligence'] + '</section>';
-          html += '</section>';
-        }
-
-        document.getElementById("submitButton").innerHTML = html;
-      }
-    });
-  });
-});
-</script>
 
 </html>
