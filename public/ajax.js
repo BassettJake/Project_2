@@ -8,6 +8,9 @@ function viewChars(){
     url: '/viewCharacters',
     contentType: 'application/json',
     success: function (res) {
+
+      document.getElementsByTagName("TITLE")[0].textContent = "View Characters";
+
       var html = '<section class="characterWrapper">';
       for (i in res) {
         html += '<section class="character">';
@@ -70,6 +73,7 @@ $(function () {
       url: '/home',
       contentType: 'application/text',
       success: function (res) {
+        document.getElementsByTagName("TITLE")[0].textContent = "Home";
         var html = '<button class="button goldButton" id="submitButton">View Characters</button>'
           document.getElementById("homeWrapper").innerHTML = html;
           document.getElementById("submitButton").addEventListener("click", viewChars);
