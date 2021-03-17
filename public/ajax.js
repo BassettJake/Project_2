@@ -1,15 +1,20 @@
 $(function () {
-  $('#submitButton').on('click', viewChars);
+  $('#viewCharButton').on('click', viewChars);
 });
 
 function viewChars(){
-  console.log("view");
   $.ajax({
     url: '/viewCharacters',
     contentType: 'application/json',
     success: function (res) {
 
-      document.getElementsByTagName("TITLE")[0].textContent = "View Characters";
+      $.ajax({
+        type: "GET",
+        url: "viewCharacters.html",
+        data: {},
+        success: function(data){
+          $("atest").html(data);
+          document.getElementsByTagName("TITLE")[0].textContent = "View Characters";
 
       var html = '<section class="characterWrapper">';
       for (i in res) {
@@ -61,23 +66,27 @@ function viewChars(){
         html += '</section>';
       }
       html += '</section>';
-      document.getElementById("homeWrapper").innerHTML = html;
+      document.getElementById("atest").innerHTML = html;
+        }
+      });
+
+      
     }
   });
 }
 
 $(function () {
   $('#headingButton').on('click', function () {
-    console.log("home");
     $.ajax({
       url: '/home',
       contentType: 'application/text',
       success: function (res) {
         document.getElementsByTagName("TITLE")[0].textContent = "Home";
-        var html = '<button class="button goldButton" id="submitButton">View Characters</button>'
+        var html = '<button class="button goldButton" id="viewCharButton">View Characters</button>'
           document.getElementById("homeWrapper").innerHTML = html;
-          document.getElementById("submitButton").addEventListener("click", viewChars);
+          document.getElementById("viewCharButton").addEventListener("click", viewChars);
       }
     });
   });
 });
+
