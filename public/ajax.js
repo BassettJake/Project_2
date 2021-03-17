@@ -10,7 +10,7 @@ function viewChars(){
 
       $.ajax({
         type: "GET",
-        url: "viewCharacters.html",
+        url: "pages/viewCharacters.html",
         data: {},
         success: function(data){
           $("atest").html(data);
