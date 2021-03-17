@@ -72,7 +72,8 @@ $(function () {
       contentType: 'application/text',
       success: function (res) {
         document.getElementsByTagName("TITLE")[0].textContent = "Home";
-        var html = '<button class="button goldButton" id="viewCharButton">View Characters</button>'
+        var html = '<button class="button goldButton" id="viewCharButton">View Characters</button>' + 
+        '<button class="button goldButton" id="createCharButton">Create Character</button>';
           document.getElementById("homeWrapper").innerHTML = html;
           document.getElementById("viewCharButton").addEventListener("click", viewChars);
       }
@@ -83,10 +84,10 @@ $(function () {
 $(function () {
   $('#createCharButton').on('click', function () {
     $.ajax({
-      type: "GET",
-      url: 'pages/createCharacter.ejs',
-      success: function () {
-        var html = '<button class="button goldButton" id="createCharButton">TEST</button>'
+      url: '/createChar',
+      contentType: 'application/text',
+      success: function (res) {
+        var html = 'TEST';
           document.getElementById("createCharacterWrapper").innerHTML = html;
       }
     });
