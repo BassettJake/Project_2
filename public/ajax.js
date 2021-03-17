@@ -8,13 +8,7 @@ function viewChars(){
     contentType: 'application/json',
     success: function (res) {
 
-      $.ajax({
-        type: "GET",
-        url: "pages/viewCharacters.html",
-        data: {},
-        success: function(data){
-          $("atest").html(data);
-          document.getElementsByTagName("TITLE")[0].textContent = "View Characters";
+      document.getElementsByTagName("TITLE")[0].textContent = "View Characters";
 
       var html = '<section class="characterWrapper">';
       for (i in res) {
@@ -66,11 +60,7 @@ function viewChars(){
         html += '</section>';
       }
       html += '</section>';
-      document.getElementById("atest").innerHTML = html;
-        }
-      });
-
-      
+      document.getElementById("homeWrapper").innerHTML = html;
     }
   });
 }
@@ -90,3 +80,15 @@ $(function () {
   });
 });
 
+$(function () {
+  $('#createCharButton').on('click', function () {
+    $.ajax({
+      type: "GET",
+      url: 'pages/createCharacter.ejs',
+      success: function () {
+        var html = '<button class="button goldButton" id="createCharButton">TEST</button>'
+          document.getElementById("createCharacterWrapper").innerHTML = html;
+      }
+    });
+  });
+});
