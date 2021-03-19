@@ -149,6 +149,13 @@ hr {
     grid-gap: .5vw;
 }
 
+#createCharacterWrapper{
+    width: 35%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
 .dropButton {
     position: relative;
 }
@@ -156,7 +163,7 @@ hr {
 .dropDown {
     display: none;
     position: absolute;
-    top: calc(12px + 10vw);
+    top: 100%;
     left: 0;
     background-color: #383838;
 }

@@ -138,7 +138,7 @@ function toStats() {
 function toConfirm() {
   setCharDetails("strength", document.getElementById("strength").value);
   setCharDetails("agility", document.getElementById("agility").value);
-  setCharDetails("widsom", document.getElementById("widsom").value);
+  setCharDetails("wisdom", document.getElementById("wisdom").value);
   setCharDetails("intelligence", document.getElementById("intelligence").value);
 
   $.get(
