@@ -118,6 +118,11 @@ hr {
     background-size: cover;
 }
 
+.greyButton {
+    background: url("/assets/greyButton.jpg") no-repeat center center;
+    background-size: cover;
+}
+
 .characterWrapper{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -142,6 +147,25 @@ hr {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: .5vw;
+}
+
+.dropButton {
+    position: relative;
+}
+
+.dropDown {
+    display: none;
+    position: absolute;
+    top: calc(12px + 10vw);
+    left: 0;
+    background-color: #383838;
+}
+
+.dropButton:hover .dropDown {
+    display: grid;
+    grid-gap: .2vw;
+    z-index: 10;
+    width: 100%;
 }
 
 .char-name{

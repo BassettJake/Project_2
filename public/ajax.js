@@ -108,6 +108,7 @@ var CharDetails = {
 
 function setCharDetails(type, param){
     CharDetails[type] =  param;
+    console.log(CharDetails);
 }
 
 $(function () {
