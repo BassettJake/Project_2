@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const { readFile } = require('fs');
+const ejs = require('ejs');
 const path = require('path');
 const {
   Pool
