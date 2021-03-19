@@ -2,7 +2,7 @@ $(function () {
   $('#viewCharButton').on('click', viewChars);
 });
 
-function viewChars(){
+function viewChars() {
   $.ajax({
     url: '/viewCharacters',
     contentType: 'application/json',
@@ -72,10 +72,10 @@ $(function () {
       contentType: 'application/text',
       success: function (res) {
         document.getElementsByTagName("TITLE")[0].textContent = "Home";
-        var html = '<button class="button goldButton" id="viewCharButton">View Characters</button>' + 
-        '<button class="button goldButton" id="createCharButton">Create Character</button>';
-          document.getElementById("homeWrapper").innerHTML = html;
-          document.getElementById("viewCharButton").addEventListener("click", viewChars);
+        var html = '<button class="button goldButton" id="viewCharButton">View Characters</button>' +
+          '<button class="button goldButton" id="createCharButton">Create Character</button>';
+        document.getElementById("homeWrapper").innerHTML = html;
+        document.getElementById("viewCharButton").addEventListener("click", viewChars);
       }
     });
   });
@@ -89,7 +89,7 @@ $(function () {
       success: function (res) {
         console.log("test");
         var html = 'TEST';
-          document.getElementById("createCharacterWrapper").innerHTML = html;
+        //document.getElementById("createCharacterWrapper").innerHTML = html;
       }
     });
   });
