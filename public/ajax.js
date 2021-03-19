@@ -83,6 +83,7 @@ $(function () {
 
 $(function () {
   $('#createCharButton').on('click', function () {
-    $("#homeWrapper").load("pages/createCharacter.ejs");
+    $("#homeWrapper").load("../createCharacter.ejs");
+    $("#homeWrapper").load("../pages/createCharacter.ejs");
   });
 });
