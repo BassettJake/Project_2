@@ -112,7 +112,7 @@ function setCharDetails(type, param){
 
 $(function () {
   $('#nextPage1').on('click', function () {
-
+console.log("test");
     setCharDetails("name", document.getElementById("name").value);
 
     $.get(
