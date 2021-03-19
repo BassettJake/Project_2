@@ -43,11 +43,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.render('pages/index'));
 app.get('/createChar', (req, res) => {
-  var page = readFile.readFileSync('../pages/createCharacter.ejs', 'utf-8');
-  console.log(page);
-  var params = {
-    html: page
-  }
-  res.send(params);
+  ejs.renderFile('../pages/createCharacter.ejs', function(err, data){
+    console.log(err || data);
+  });
 });
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
