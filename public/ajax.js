@@ -92,3 +92,35 @@ $(function () {
       });
   });
 });
+
+var CharDetails = {
+  name: "",
+  species: "",
+  class: "",
+  backstory: "",
+  weapon: "",
+  armor: "",
+  strength: "",
+  agility: "",
+  widsom: "",
+  intelligence: ""
+};
+
+function setCharDetails(type, param){
+    CharDetails[type] =  param;
+}
+
+$(function () {
+  $('#nextPage1').on('click', function () {
+
+    setCharDetails("name", document.getElementById("name").value);
+
+    $.get(
+      '/createNext1',
+      function (res) {
+        console.log(CharDetails);
+        var html = res;
+          document.getElementsByTagName("html")[0].innerHTML = html;
+      });
+  });
+});

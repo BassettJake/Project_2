@@ -93,6 +93,7 @@ hr {
     cursor: pointer;
     border: none;
     font-size: calc(18px + 1vw);
+    background-color: rgb(28, 28, 28);
 }
 
 .button {

@@ -46,4 +46,7 @@ app.get('/', (req, res) => res.render('pages/index'));
 app.get('/createChar', (req, res) => {
   res.render('pages/createCharacter');
 });
+app.get('/createNext1', (req, res) => {
+  res.render('pages/createNext1');
+});
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));

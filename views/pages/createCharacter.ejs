@@ -1,4 +1,3 @@
-
 <html lang="en">
 
 <head>
@@ -8,33 +7,54 @@
   <title>Create Character</title>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript" src="/ajax.js"></script>
-  <link href="/style.css"  rel="stylesheet" type="text/css" media="screen">
+  <link href="/style.css" rel="stylesheet" type="text/css" media="screen">
 </head>
 
 <body>
   <header>
     <section id="titleWrapper">
       <h1 id="headTitle">
-          <button id="headingButton">Character Builder</button>
+        <button id="headingButton">Character Builder</button>
       </h1>
-  </section>
-  <hr id="faintHr">
+    </section>
+    <hr id="faintHr">
   </header>
   <main>
     <section id="createCharacterWrapper">
-TEST
+      <input type="hidden" id="name" name="name" value="">
+      <section class="dropButton">
+        <section class="button goldButton selectSpecies">Species
+          <section class="dropDown">
+            <button type="button" class="button greyButton" onclick="setCharDetails('species', this.value)" value="Human">Human</button>
+            <button type="button" class="button greyButton" onclick="setCharDetails('species', this.value)" value="Elf">Elf</button>
+            <button type="button" class="button greyButton" onclick="setCharDetails('species', this.value)" value="Dwarf">Dwarf</button>
+            <button type="button" class="button greyButton" onclick="setCharDetails('species', this.value)" value="Orc">Orc</button>
+            <button type="button" class="button greyButton" onclick="setCharDetails('species', this.value)" value="Half-Elf">Half-Elf</button>
+          </section>
+        </section>
+      </section>
+      <section class="dropButton">
+        <section class="button goldButton selectClass">Class
+          <section class="dropDown">
+            <button type="button" class="button greyButton" onclick="setCharDetails('class', this.value)" value="Fighter">Fighter</button>
+            <button type="button" class="button greyButton" onclick="setCharDetails('class', this.value)" value="Rogue">Rogue</button>
+            <button type="button" class="button greyButton" onclick="setCharDetails('class', this.value)" value="Mage">Mage</button>
+          </section>
+        </section>
+      </section>
+      <button class="button goldButton" id="nextPage1">Next</button>
     </section>
 
   </main>
-<footer>
-<hr>  
-<section id="foot">
-    <span id="copyR">
+  <footer>
+    <hr>
+    <section id="foot">
+      <span id="copyR">
         &copy; All rights reserved.
-    </span>
-</section>
+      </span>
+    </section>
 
-</footer>
+  </footer>
 </body>
 
 </html>
