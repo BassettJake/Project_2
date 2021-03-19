@@ -87,6 +87,7 @@ $(function () {
       url: '/createChar',
       contentType: 'application/text',
       success: function (res) {
+        console.log("test");
         var html = 'TEST';
           document.getElementById("createCharacterWrapper").innerHTML = html;
       }

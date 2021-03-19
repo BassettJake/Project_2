@@ -41,5 +41,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.render('pages/index'));
-app.get('/createChar', (req, res) => res.send('pages/createCharacter'));
+app.get('/createChar', (req, res) => res.render('pages/createCharacter'));
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
