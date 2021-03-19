@@ -3,6 +3,11 @@ button {
     padding: 0;
     font-family: unset;
 }
+input {
+    background-color: #5C5C5C;
+    color: rgb(255, 215, 0);
+    border: calc(1px + .1vw) solid #808080;
+}
 
 /* metamorphous-regular - latin */
 @font-face {
@@ -151,9 +156,9 @@ hr {
 
 #createCharacterWrapper{
     width: 35%;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
+    display: grid;
+    justify-content: center;
+    margin: auto;
 }
 
 .dropButton {
@@ -173,6 +178,11 @@ hr {
     grid-gap: .2vw;
     z-index: 10;
     width: 100%;
+}
+
+.greyButton:hover {
+    background: url("/assets/goldButton.jpg") no-repeat center center;
+    background-size: cover;
 }
 
 .char-name{

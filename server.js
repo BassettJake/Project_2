@@ -38,7 +38,7 @@ app.get('/viewCharacters', (req, res) => {
     res.send(results.rows);
   });
 });
-app.post('/calcPostage', (req, res) => {
+app.post('/createCharacter', (req, res) => {
 
   var cname = req.body.cname;
   var cspecies = req.body.cspecies;

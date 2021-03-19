@@ -127,7 +127,7 @@ function toBackstory() {
 }
 
 function toStats() {
-  setCharDetails("backstory", document.getElementById("backstory").textContent);
+  setCharDetails("backstory", document.getElementById("backstory").value);
 
   $.get(
     '/createNext2',
@@ -158,7 +158,7 @@ function toConfirm() {
         CharDetails.strength + '</li><li>' +
         CharDetails.agility + '</li><li>' +
         CharDetails.wisdom + '</li><li>' +
-        CharDetails.intelligence + '</li><li></ul>';
+        CharDetails.intelligence + '</li></ul>';
 
 
       charHtml += '<form id="postageForm" action="/createCharacter" method="post">' +
