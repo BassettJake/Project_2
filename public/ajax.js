@@ -90,7 +90,6 @@ $(function () {
         var html = res;
         console.log(html);
           //document.getElementById("createCharacterWrapper").innerHTML = html;
-      }
-    });
+      });
   });
 });
