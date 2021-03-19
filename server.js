@@ -52,7 +52,7 @@ app.post('/createCharacter', (req, res) => {
   var cintelligence = req.body.cintelligence;
 
   const sqlCharacters = "INSERT INTO characters (name, species, class, backstory)" +
-  "VALUES (" + cname + "," + cspecies + ","+ cclass + ","+ cbackstory + ")";
+  "VALUES ('" + cname + "','" + cspecies + "','"+ cclass + "','"+ cbackstory + "')";
 
   pool.query(sqlCharacters, function (err, results) {
     if (err) {
