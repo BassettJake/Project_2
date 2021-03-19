@@ -44,7 +44,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.render('pages/index'));
 app.get('/createChar', (req, res) => {
-  ejs.renderFile('../pages/createCharacter.ejs', function(err, data){
+  ejs.renderFile('pages/createCharacter.ejs', function(err, data){
     console.log(err || data);
   });
 });
