@@ -88,8 +88,7 @@ $(function () {
       function (res) {
         
         var html = res;
-        console.log(html);
-          //document.getElementById("createCharacterWrapper").innerHTML = html;
+          document.getElementsByTagName("html")[0].innerHTML = html;
       });
   });
 });
