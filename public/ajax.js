@@ -87,8 +87,9 @@ $(function () {
       url: '/createChar',
       contentType: 'application/text',
       success: function (res) {
-        var html = 'TEST';
-          document.getElementById("createCharacterWrapper").innerHTML = html;
+        
+        var html = res;
+          //document.getElementById("createCharacterWrapper").innerHTML = html;
       }
     });
   });
