@@ -51,8 +51,8 @@ app.post('/createCharacter', (req, res) => {
   var cwisdom = req.body.cwisdom;
   var cintelligence = req.body.cintelligence;
 
-  const sqlCharacters = "INSERT INTO characters (name, species, class, backstory)" +
-  "VALUES ('" + cname + "','" + cspecies + "','"+ cclass + "','"+ cbackstory + "')";
+  const sqlCharacters = "INSERT INTO characters (name, species, class, backstory, weapon, armor, strength, agility, wisdom, intelligence)" +
+  "VALUES ('" + cname + "','" + cspecies + "','"+ cclass + "','"+ cbackstory + "','" + cweapon + "','" + carmor + "','" + cstrength + "','" + cagility + "','"+ cwisdom + "','"+ cintelligence + "')";
 
   pool.query(sqlCharacters, function (err, results) {
     if (err) {
@@ -60,12 +60,9 @@ app.post('/createCharacter', (req, res) => {
       console.log(err);
     }
     console.log("Query " + sqlCharacters + " successful");
-    res.send(results.rows);
+    console.log(results.rows);
   });
-
-
   res.render('pages/index');
-  res.end();
 });
 app.get('/home', (req, res) => {
   res.send("Home");

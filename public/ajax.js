@@ -66,21 +66,24 @@ function viewChars() {
 }
 
 $(function () {
-  $('#headingButton').on('click', function () {
-    $.ajax({
-      url: '/home',
-      contentType: 'application/text',
-      success: function (res) {
-        document.getElementsByTagName("TITLE")[0].textContent = "Home";
-        var html = '<button class="button goldButton" id="viewCharButton">View Characters</button>' +
-          '<button class="button goldButton" id="createCharButton">Create Character</button>';
-        document.getElementById("homeWrapper").innerHTML = html;
-        document.getElementById("viewCharButton").addEventListener("click", viewChars);
-        document.getElementById("createCharButton").addEventListener("click", createChars);
-      }
-    });
-  });
+  $('#headingButton').on('click', home);
 });
+
+function home() {
+
+  $.ajax({
+    url: '/home',
+    contentType: 'application/text',
+    success: function (res) {
+      document.getElementsByTagName("TITLE")[0].textContent = "Home";
+      var html = '<button class="button goldButton" id="viewCharButton">View Characters</button>' +
+        '<button class="button goldButton" id="createCharButton">Create Character</button>';
+      document.getElementById("homeWrapper").innerHTML = html;
+      document.getElementById("viewCharButton").addEventListener("click", viewChars);
+      document.getElementById("createCharButton").addEventListener("click", createChars);
+    }
+  });
+}
 
 $(function () {
   $('#createCharButton').on('click', createChars);
@@ -94,6 +97,9 @@ function createChars() {
       var html = res;
       document.getElementsByTagName("html")[0].innerHTML = html;
       document.getElementById("toBackstory").addEventListener("click", toBackstory);
+      document.getElementById("viewCharButton").addEventListener("click", viewChars);
+      document.getElementById("createCharButton").addEventListener("click", createChars);
+      document.getElementById("headingButton").addEventListener("click", home);
     });
 }
 
