@@ -2,7 +2,7 @@ $(function () {
   $('#viewCharButton').on('click', viewChars);
 });
 
-function viewChars(){
+function viewChars() {
   $.ajax({
     url: '/viewCharacters',
     contentType: 'application/json',
@@ -72,10 +72,10 @@ $(function () {
       contentType: 'application/text',
       success: function (res) {
         document.getElementsByTagName("TITLE")[0].textContent = "Home";
-        var html = '<button class="button goldButton" id="viewCharButton">View Characters</button>' + 
-        '<button class="button goldButton" id="createCharButton">Create Character</button>';
-          document.getElementById("homeWrapper").innerHTML = html;
-          document.getElementById("viewCharButton").addEventListener("click", viewChars);
+        var html = '<button class="button goldButton" id="viewCharButton">View Characters</button>' +
+          '<button class="button goldButton" id="createCharButton">Create Character</button>';
+        document.getElementById("homeWrapper").innerHTML = html;
+        document.getElementById("viewCharButton").addEventListener("click", viewChars);
       }
     });
   });
@@ -86,9 +86,10 @@ $(function () {
     $.get(
       '/createChar',
       function (res) {
-        
+
         var html = res;
-          document.getElementsByTagName("html")[0].innerHTML = html;
+        document.getElementsByTagName("html")[0].innerHTML = html;
+        document.getElementById("toBackstory").addEventListener("click", toBackstory);
       });
   });
 });
@@ -106,22 +107,20 @@ var CharDetails = {
   intelligence: ""
 };
 
-function setCharDetails(type, param){
-    CharDetails[type] =  param;
-    console.log(CharDetails);
+function setCharDetails(type, param) {
+  CharDetails[type] = param;
+  console.log(CharDetails);
 }
 
-$(function () {
-  $('#nextPage1').on('click', function () {
-console.log("test");
-    setCharDetails("name", document.getElementById("name").value);
+function toBackstory() {
+  console.log("test");
+  setCharDetails("name", document.getElementById("name").value);
 
-    $.get(
-      '/createNext1',
-      function (res) {
-        console.log(CharDetails);
-        var html = res;
-          document.getElementsByTagName("html")[0].innerHTML = html;
-      });
-  });
-});
+  $.get(
+    '/createNext1',
+    function (res) {
+      console.log(CharDetails);
+      var html = res;
+      document.getElementsByTagName("html")[0].innerHTML = html;
+    });
+}
