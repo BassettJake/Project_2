@@ -45,10 +45,5 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.render('pages/index'));
 app.get('/createChar', (req, res) => {
   res.render('pages/createCharacter');
-  var t = res.render('pages/createCharacter');
-  console.log(t);
-  ejs.renderFile('pages/createCharacter', function(err, data){
-    console.log(err || data);
-  });
 });
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));

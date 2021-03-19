@@ -83,10 +83,9 @@ $(function () {
 
 $(function () {
   $('#createCharButton').on('click', function () {
-    $.ajax({
-      url: '/createChar',
-      contentType: 'application/text',
-      success: function (res) {
+    $.get(
+      '/createChar',
+      function (res) {
         
         var html = res;
         console.log(html);
