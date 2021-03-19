@@ -1,7 +1,9 @@
 require('dotenv').config();
 
 const express = require('express');
-const { readFile } = require('fs');
+const {
+  readFile
+} = require('fs');
 const ejs = require('ejs');
 const path = require('path');
 const {
@@ -36,8 +38,37 @@ app.get('/viewCharacters', (req, res) => {
     res.send(results.rows);
   });
 });
+app.post('/calcPostage', (req, res) => {
+
+  var cname = req.body.cname;
+  var cspecies = req.body.cspecies;
+  var cclass = req.body.cclass;
+  var cbackstory = req.body.cbackstory;
+  var cweapon = req.body.cweapon;
+  var carmor = req.body.carmor;
+  var cstrength = req.body.cstrength;
+  var cagility = req.body.cagility;
+  var cwisdom = req.body.cwisdom;
+  var cintelligence = req.body.cintelligence;
+
+  const sqlCharacters = "INSERT INTO characters (name, species, class, backstory)" +
+  "VALUES (" + cname + "," + cname + ","+ cspecies + ","+ cclass + ","+ cbackstory + ")";
+
+  pool.query(sqlCharacters, function (err, results) {
+    if (err) {
+      console.log("Error in query: ");
+      console.log(err);
+    }
+    console.log("Query " + sqlCharacters + " successful");
+    res.send(results.rows);
+  });
+
+
+  res.render('pages/index');
+  res.end();
+});
 app.get('/home', (req, res) => {
-    res.send("Home");
+  res.send("Home");
 });
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
@@ -48,5 +79,11 @@ app.get('/createChar', (req, res) => {
 });
 app.get('/createNext1', (req, res) => {
   res.render('pages/createNext1');
+});
+app.get('/createNext2', (req, res) => {
+  res.render('pages/createNext2');
+});
+app.get('/createConfirm', (req, res) => {
+  res.render('pages/createConfirm');
 });
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));

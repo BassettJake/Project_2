@@ -103,24 +103,75 @@ var CharDetails = {
   armor: "",
   strength: "",
   agility: "",
-  widsom: "",
+  wisdom: "",
   intelligence: ""
 };
 
 function setCharDetails(type, param) {
   CharDetails[type] = param;
-  console.log(CharDetails);
 }
 
 function toBackstory() {
-  console.log("test");
   setCharDetails("name", document.getElementById("name").value);
 
   $.get(
     '/createNext1',
     function (res) {
-      console.log(CharDetails);
       var html = res;
       document.getElementsByTagName("html")[0].innerHTML = html;
+      document.getElementById("toStats").addEventListener("click", toStats);
+    });
+}
+
+function toStats() {
+  setCharDetails("backstory", document.getElementById("backstory").textContent);
+
+  $.get(
+    '/createNext2',
+    function (res) {
+      var html = res;
+      document.getElementsByTagName("html")[0].innerHTML = html;
+      document.getElementById("toConfirm").addEventListener("click", toConfirm);
+    });
+}
+
+function toConfirm() {
+  setCharDetails("strength", document.getElementById("strength").value);
+  setCharDetails("agility", document.getElementById("agility").value);
+  setCharDetails("widsom", document.getElementById("widsom").value);
+  setCharDetails("intelligence", document.getElementById("intelligence").value);
+
+  $.get(
+    '/createConfirm',
+    function (res) {
+      var html = res;
+      document.getElementsByTagName("html")[0].innerHTML = html;
+      var charHtml = '<ul><li>' + CharDetails.name + '</li><li>' + 
+      CharDetails.species + '</li><li>' +
+      CharDetails.class + '</li><li>' +
+      CharDetails.backstory + '</li><li>' +
+      CharDetails.weapon + '</li><li>' +
+      CharDetails.armor + '</li><li>' +
+      CharDetails.strength + '</li><li>' +
+      CharDetails.agility + '</li><li>' +
+      CharDetails.wisdom + '</li><li>' +
+      CharDetails.intelligence + '</li><li></ul>';
+
+
+      charHtml += '<form id="postageForm" action="/createCharacter" method="post">' +
+      '<input type="hidden" id="cname" name="cname" value="' + CharDetails.name + '">' +
+      '<input type="hidden" id="cspecies" name="cspecies" value="' + CharDetails.species + '">' +
+      '<input type="hidden" id="cclass" name="cclass" value="' + CharDetails.class + '">' +
+      '<input type="hidden" id="cbackstory" name="cbackstory" value="' + CharDetails.backstory + '">' +
+      '<input type="hidden" id="cweapon" name="cweapon" value="' + CharDetails.weapon + '">' +
+      '<input type="hidden" id="carmor" name="carmor" value="' + CharDetails.armor + '">' +
+      '<input type="hidden" id="cstrength" name="cstrength" value="' + CharDetails.strength + '">' +
+      '<input type="hidden" id="cagility" name="cagility" value="' + CharDetails.agility + '">' +
+      '<input type="hidden" id="cwisdom" name="cwisdom" value="' + CharDetails.wisdom + '">' +
+      '<input type="hidden" id="cintelligence" name="cintelligence" value="' + CharDetails.intelligence + '">' +
+      '<input id="confirm" type="submit" name="submit" value="Submit">' + 
+    '</form>';
+
+      document.getElementById("viewCharacter").innerHTML = charHtml;
     });
 }

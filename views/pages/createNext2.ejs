@@ -1,0 +1,63 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Create Character</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/ajax.js"></script>
+  <link href="/style.css" rel="stylesheet" type="text/css" media="screen">
+</head>
+
+<body>
+  <header>
+    <section id="titleWrapper">
+      <h1 id="headTitle">
+        <button id="headingButton">Character Builder</button>
+      </h1>
+    </section>
+    <hr id="faintHr">
+  </header>
+  <main>
+    <section id="createCharacterWrapper">
+      <input type="number" min="0" max="5" id="strength" name="strength">
+      <input type="number" min="0" max="5" id="agility" name="agility">
+      <input type="number" min="0" max="5" id="wisdom" name="wisdom">
+      <input type="number" min="0" max="5" id="intelligence" name="intelligence">
+      <section class="dropButton">
+        <section class="button goldButton selectArmor">Armor
+          <section class="dropDown">
+            <button type="button" class="button greyButton" onclick="setCharDetails('armor', this.value)" value="Cloth">Cloth</button>
+            <button type="button" class="button greyButton" onclick="setCharDetails('armor', this.value)" value="Leather">Leather</button>
+            <button type="button" class="button greyButton" onclick="setCharDetails('armor', this.value)" value="Plate">Plate</button>
+          </section>
+        </section>
+      </section>
+      <section class="dropButton">
+        <section class="button goldButton selectWeapon">Weapon
+          <section class="dropDown">
+            <button type="button" class="button greyButton" onclick="setCharDetails('weapon', this.value)" value="Sword_&_Shield">Sword & Shield</button>
+            <button type="button" class="button greyButton" onclick="setCharDetails('weapon', this.value)" value="Great_Axe">Great Axe</button>
+            <button type="button" class="button greyButton" onclick="setCharDetails('weapon', this.value)" value="Bow">Bow</button>
+            \<button type="button" class="button greyButton" onclick="setCharDetails('weapon', this.value)" value="Daggers">Daggers</button>
+            <button type="button" class="button greyButton" onclick="setCharDetails('weapon', this.value)" value="Magic">Magic</button>
+          </section>
+        </section>
+      </section>
+      <button class="button goldButton" id="toConfirm">Next</button>
+    </section>
+
+  </main>
+  <footer>
+    <hr>
+    <section id="foot">
+      <span id="copyR">
+        &copy; All rights reserved.
+      </span>
+    </section>
+
+  </footer>
+</body>
+
+</html>
