@@ -42,7 +42,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.render('pages/index'));
 app.get('/createChar', (req, res) => {
-  var page = new EJS({url:'pages/createCharacter.ejs'}).res.render();
+  var page = new EJS({url:'pages/createCharacter'}).res.render();
   var params = {
     html: page
   }

@@ -89,6 +89,7 @@ $(function () {
       success: function (res) {
         
         var html = res;
+        console.log(html);
           //document.getElementById("createCharacterWrapper").innerHTML = html;
       }
     });
