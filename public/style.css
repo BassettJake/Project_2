@@ -43,6 +43,8 @@ body {
 
 #titleWrapper {
     position: relative;
+    display: grid;
+justify-content: center;
 }
 
 #headTitle {
