@@ -118,18 +118,41 @@ var CharDetails = {
 
 function setCharDetails(type, param) {
   CharDetails[type] = param;
+  if(type == "species"){
+    document.getElementById("selectSpecies").textContent = param;
+  }
 }
 
 function toBackstory() {
-  setCharDetails("name", document.getElementById("name").value);
+  var eleName = document.getElementById("name").value
+  var eleClass = CharDetails.class;
+  var eleSpecies = CharDetails.species;
+  var message = "";
+  if(eleName.match("/^[a-z ,.'-]+$/i/g") && eleClass != "" && eleClass != ""){
+    setCharDetails("name", eleName);
 
-  $.get(
-    '/createNext1',
-    function (res) {
-      var html = res;
-      document.getElementsByTagName("html")[0].innerHTML = html;
-      document.getElementById("toStats").addEventListener("click", toStats);
-    });
+    $.get(
+      '/createNext1',
+      function (res) {
+        var html = res;
+        document.getElementsByTagName("html")[0].innerHTML = html;
+        document.getElementById("toStats").addEventListener("click", toStats);
+      });
+  }
+  else{
+    if(!(eleName.match("/^[a-z ,.'-]+$/i/g"))){
+      message += "Name can only include letters, commas, apostrophes, periods, and hyphens.<br>";
+    }
+    if(eleClass == ""){
+      message += "Please select a class.<br>";
+    }
+    if(eleSpecies == ""){
+      message += "Please select a species.<br>";
+    }
+    document.getElementById("message").textContent = message;
+    document.getElementById("message").style.display = "block";
+
+  }
 }
 
 function toStats() {
