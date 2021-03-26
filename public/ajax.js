@@ -161,9 +161,9 @@ function toBackstory() {
 }
 
 function toStats() {
-  var eleBackstory = (document.getElementById("backstory").value).trim();
+  var eleBackstory = document.getElementById("backstory").value;
   var message = "";
-  if (eleBackstory.match("/^[a-z ,.'\!\(\)\-]+$/gi")) {
+  if (eleBackstory.match("/^[a-z ,.'!()-]+$/gi")) {
     console.log( document.getElementById("backstory").value);
   setCharDetails("backstory", document.getElementById("backstory").value);
 
@@ -176,7 +176,7 @@ function toStats() {
     });
   } else {
     message += "<ul>";
-    if (!(eleBackstory.match("/^[a-z ,.'\!\(\)\-]+$/gi"))) {
+    if (!(eleBackstory.match("/^[a-z ,.'!()-]+$/gi"))) {
       message += "<li>Backstory can only include letters, spaces, commas, exclaimations, parenthesis, apostrophes, periods, and hyphens.</li>";
     }
     message += "</ul>";
