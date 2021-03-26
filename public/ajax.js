@@ -280,7 +280,7 @@ function toConfirm() {
   } else {
     message += "<ul>";
     if ((eleStr == "" || eleStr < 0 || eleStr > 5) && (eleAgi == "" || eleAgi < 0 || eleAgi > 5) && (eleWis == "" || eleWis < 0 || eleWis > 5) && (eleInt == "" || eleInt < 0 || eleInt > 5)) {
-      message += "<li>Please fill out all stats.</li>";
+      message += "<li>Please fill out all stats with numbers 0 - 5.</li>";
     }
     if(eleWeapon == ""){
       message += "<li>Please select a weapon.</li>";
