@@ -140,15 +140,17 @@ function toBackstory() {
       });
   }
   else{
+    message += "<ul>";
     if(!(eleName.match("/^[a-z ,.'-]+$/gi"))){
-      message += "Name can only include letters, spaces, commas, apostrophes, periods, and hyphens.<br>";
+      message += "<li>Name can only include letters, spaces, commas, apostrophes, periods, and hyphens.</li>";
     }
     if(eleClass == ""){
-      message += "Please select a class.<br>";
+      message += "Please select a class.</li>";
     }
     if(eleSpecies == ""){
-      message += "Please select a species.<br>";
+      message += "Please select a species.</li>";
     }
+    message += "</ul>";
     document.getElementById("message").innerHTML = message;
     document.getElementById("message").style.display = "block";
 
