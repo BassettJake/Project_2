@@ -57,11 +57,12 @@ function viewChars() {
         html += '<section class="bottom">';
         html += '<section class="char-backstory">' + res[i]['backstory'] + '</section>';
         html += '</section>';
-        html += '</section>';
-        html += '<form id="postageForm" action="/deleteCharacter" method="post">' +
+        html += '<form action="/deleteCharacter" method="post">' +
         '<input type="hidden" id="cid" name="cid" value="' + res[i]['id'] + '">' +
-        '<input id="confirm" type="submit" name="submit" value="Submit">' +
+        '<input id="confirm" type="submit" name="submit" value="Delete">' +
         '</form>';
+        html += '</section>';
+
       }
       html += '</section>';
       document.getElementById("mainWrapper").innerHTML = html;
@@ -260,7 +261,7 @@ function toConfirm() {
       charHtml += '</section>';
 
 
-      charHtml += '<form id="postageForm" action="/createCharacter" method="post">' +
+      charHtml += '<form action="/createCharacter" method="post">' +
         '<input type="hidden" id="cname" name="cname" value="' + CharDetails.name + '">' +
         '<input type="hidden" id="cspecies" name="cspecies" value="' + CharDetails.species + '">' +
         '<input type="hidden" id="cclass" name="cclass" value="' + CharDetails.class + '">' +

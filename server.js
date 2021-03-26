@@ -26,7 +26,7 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-app.get('/deleteCharacters', (req, res) => {
+app.post('/deleteCharacters', (req, res) => {
   const sqlCharacters = "DELETE FROM characters WHERE id=" + req.body.cid;
 
   pool.query(sqlCharacters, function (err, results) {
