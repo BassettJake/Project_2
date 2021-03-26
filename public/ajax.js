@@ -134,7 +134,7 @@ function toBackstory() {
   var eleClass = CharDetails.class;
   var eleSpecies = CharDetails.species;
   var message = "";
-  if (eleName.match("/^[a-z ,.'-]+$/gi") && eleClass != "" && eleClass != "") {
+  if (eleName.match(/^[a-z ,.'-]+$/gi) && eleClass != "" && eleClass != "") {
     setCharDetails("name", eleName);
 
     $.get(
@@ -146,7 +146,7 @@ function toBackstory() {
       });
   } else {
     message += "<ul>";
-    if (!(eleName.match("/^[a-z ,.'-]+$/gi"))) {
+    if (!(eleName.match(/^[a-z ,.'-]+$/gi))) {
       message += "<li>Name can only include letters, spaces, commas, apostrophes, periods, and hyphens.</li>";
     }
     if (eleClass == "") {
