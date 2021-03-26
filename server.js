@@ -26,6 +26,19 @@ app.use(express.urlencoded({
   extended: true
 }));
 
+app.get('/deleteCharacters', (req, res) => {
+  const sqlCharacters = "DELETE FROM characters WHERE id=" + req.body.cid;
+
+  pool.query(sqlCharacters, function (err, results) {
+    if (err) {
+      console.log("Error in query: ");
+      console.log(err);
+    }
+    console.log("Query " + sqlCharacters + " successful");
+    res.send(results.rows);
+  });
+});
+
 app.get('/viewCharacters', (req, res) => {
   const sqlCharacters = "SELECT * FROM characters";
 

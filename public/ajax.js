@@ -58,8 +58,23 @@ function viewChars() {
         html += '<section class="char-backstory">' + res[i]['backstory'] + '</section>';
         html += '</section>';
         html += '</section>';
+        html += '<form id="postageForm" action="/deleteCharacter" method="post">' +
+        '<input type="hidden" id="cid" name="cid" value="' + res[i]['id'] + '">' +
+        '<input id="confirm" type="submit" name="submit" value="Submit">' +
+        '</form>';
       }
       html += '</section>';
+      document.getElementById("mainWrapper").innerHTML = html;
+    }
+  });
+}
+
+function deleteChars(id) {
+  $.ajax({
+    url: '/deleteCharacter',
+    contentType: 'application/json',
+    success: function (res) {
+
       document.getElementById("mainWrapper").innerHTML = html;
     }
   });
@@ -185,7 +200,7 @@ function toConfirm() {
   var eleArmor = CharDetails.armor;
   var message = "";
 
-  if (eleStr != "" && eleAgi != "" && eleWis != "" && eleInt != "" && eleWeapon != "" && eleArmor != "") {
+  if ((eleStr != "" || eleStr >= 0 || eleStr <= 5) && (eleAgi != "" || eleAgi >= 0 || eleAgi <= 5) && (eleWis != "" || eleWis >= 0 || eleWis <= 5) && (eleInt != "" || eleInt >= 0 || eleInt <= 5) && eleWeapon != "" && eleArmor != "") {
   setCharDetails("strength", document.getElementById("strength").value);
   setCharDetails("agility", document.getElementById("agility").value);
   setCharDetails("wisdom", document.getElementById("wisdom").value);
@@ -263,7 +278,7 @@ function toConfirm() {
     });
   } else {
     message += "<ul>";
-    if (eleStr == "" || eleAgi == "" || eleWis == "" || eleInt == "") {
+    if ((eleStr == "" || eleStr < 0 || eleStr > 5) && (eleAgi == "" || eleAgi < 0 || eleAgi > 5) && (eleWis == "" || eleWis < 0 || eleWis > 5) && (eleInt == "" || eleInt < 0 || eleInt > 5)) {
       message += "<li>Please fill out all stats.</li>";
     }
     if(eleWeapon == ""){
