@@ -141,13 +141,13 @@ function toBackstory() {
   }
   else{
     if(!(eleName.match("/^[a-z ,.'-]+$/i/g"))){
-      message += "Name can only include letters, commas, apostrophes, periods, and hyphens.<br>";
+      message += "Name can only include letters, spaces, commas, apostrophes, periods, and hyphens." + '\n';
     }
     if(eleClass == ""){
-      message += "Please select a class.<br>";
+      message += "Please select a class.";
     }
     if(eleSpecies == ""){
-      message += "Please select a species.<br>";
+      message += "Please select a species." + '\n';
     }
     document.getElementById("message").textContent = message;
     document.getElementById("message").style.display = "block";
