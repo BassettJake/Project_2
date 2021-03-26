@@ -181,6 +181,7 @@ function toConfirm() {
   var eleInt = document.getElementById("intelligence").value;
   var eleWeapon = CharDetails.weapon;
   var eleArmor = CharDetails.armor;
+  var message = "";
 
   if (eleStr != "" && eleAgi != "" && eleWis != "" && eleInt != "" && eleWeapon != "" && eleArmor != "") {
   setCharDetails("strength", document.getElementById("strength").value);
