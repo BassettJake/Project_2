@@ -97,7 +97,6 @@ function createChars() {
       var html = res;
       document.getElementsByTagName("html")[0].innerHTML = html;
       document.getElementById("toBackstory").addEventListener("click", toBackstory);
-      document.getElementById("createCharButton").addEventListener("click", createChars);
       document.getElementById("headingButton").addEventListener("click", home);
     });
 }
