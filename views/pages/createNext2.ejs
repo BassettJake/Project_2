@@ -26,7 +26,7 @@
       <input type="number" min="0" max="5" id="wisdom" name="wisdom">
       <input type="number" min="0" max="5" id="intelligence" name="intelligence">
       <section class="dropButton">
-        <section class="button goldButton selectArmor">Armor
+        <section class="button goldButton"><span id="selectArmor">Armor</span>
           <section class="dropDown">
             <button type="button" class="button greyButton" onclick="setCharDetails('armor', this.value)" value="Cloth">Cloth</button>
             <button type="button" class="button greyButton" onclick="setCharDetails('armor', this.value)" value="Leather">Leather</button>
@@ -35,7 +35,7 @@
         </section>
       </section>
       <section class="dropButton">
-        <section class="button goldButton selectWeapon">Weapon
+        <section class="button goldButton"><span id="selectWeapon">Weapon</span>
           <section class="dropDown">
             <button type="button" class="button greyButton" onclick="setCharDetails('weapon', this.value)" value="Sword_&_Shield">Sword & Shield</button>
             <button type="button" class="button greyButton" onclick="setCharDetails('weapon', this.value)" value="Great_Axe">Great Axe</button>

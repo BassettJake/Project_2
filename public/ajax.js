@@ -118,17 +118,23 @@ var CharDetails = {
 
 function setCharDetails(type, param) {
   CharDetails[type] = param;
-  if(type == "species"){
+  if (type == "species") {
     document.getElementById("selectSpecies").textContent = param;
+  } else if (type == "class") {
+    document.getElementById("selectClass").textContent = param;
+  } else if (type == "weapon") {
+    document.getElementById("selectWeapon").textContent = param;
+  } else if (type == "armor") {
+    document.getElementById("selectArmor").textContent = param;
   }
 }
 
 function toBackstory() {
-  var eleName = document.getElementById("name").value
+  var eleName = document.getElementById("name").value;
   var eleClass = CharDetails.class;
   var eleSpecies = CharDetails.species;
   var message = "";
-  if(eleName.match("/^[a-z ,.'-]+$/i/g") && eleClass != "" && eleClass != ""){
+  if (eleName.match("/^[a-z ,.'-]+$/gi") && eleClass != "" && eleClass != "") {
     setCharDetails("name", eleName);
 
     $.get(
@@ -138,16 +144,15 @@ function toBackstory() {
         document.getElementsByTagName("html")[0].innerHTML = html;
         document.getElementById("toStats").addEventListener("click", toStats);
       });
-  }
-  else{
+  } else {
     message += "<ul>";
-    if(!(eleName.match("/^[a-z ,.'-]+$/gi"))){
+    if (!(eleName.match("/^[a-z ,.'-]+$/gi"))) {
       message += "<li>Name can only include letters, spaces, commas, apostrophes, periods, and hyphens.</li>";
     }
-    if(eleClass == ""){
+    if (eleClass == "") {
       message += "<li>Please select a class.</li>";
     }
-    if(eleSpecies == ""){
+    if (eleSpecies == "") {
       message += "<li>Please select a species.</li>";
     }
     message += "</ul>";
@@ -158,6 +163,9 @@ function toBackstory() {
 }
 
 function toStats() {
+  var eleBackstory = document.getElementById("backstory").value;
+  var message = "";
+  if (eleBackstory.match("/^[a-z ,.'-!()]+$/gi")) {
   setCharDetails("backstory", document.getElementById("backstory").value);
 
   $.get(
@@ -167,9 +175,27 @@ function toStats() {
       document.getElementsByTagName("html")[0].innerHTML = html;
       document.getElementById("toConfirm").addEventListener("click", toConfirm);
     });
+  } else {
+    message += "<ul>";
+    if (!(eleBackstory.match("/^[a-z ,.'-!()]+$/gi"))) {
+      message += "<li>Backstory can only include letters, spaces, commas, exclaimations, parenthesis, apostrophes, periods, and hyphens.</li>";
+    }
+    message += "</ul>";
+    document.getElementById("message").innerHTML = message;
+    document.getElementById("message").style.display = "block";
+
+  }
 }
 
 function toConfirm() {
+  var eleStr = document.getElementById("strength").value;
+  var eleAgi = document.getElementById("agility").value;
+  var eleWis = document.getElementById("wisdom").value;
+  var eleInt = document.getElementById("intelligence").value;
+  var eleWeapon = CharDetails.weapon;
+  var eleArmor = CharDetails.armor;
+
+  if (eleStr != "" && eleAgi != "" && eleWis != "" && eleInt != "" && eleWeapon != "" && eleArmor != "") {
   setCharDetails("strength", document.getElementById("strength").value);
   setCharDetails("agility", document.getElementById("agility").value);
   setCharDetails("wisdom", document.getElementById("wisdom").value);
@@ -180,16 +206,53 @@ function toConfirm() {
     function (res) {
       var html = res;
       document.getElementsByTagName("html")[0].innerHTML = html;
-      var charHtml = '<ul><li>' + CharDetails.name + '</li><li>' +
-        CharDetails.species + '</li><li>' +
-        CharDetails.class + '</li><li>' +
-        CharDetails.backstory + '</li><li>' +
-        CharDetails.weapon + '</li><li>' +
-        CharDetails.armor + '</li><li>' +
-        CharDetails.strength + '</li><li>' +
-        CharDetails.agility + '</li><li>' +
-        CharDetails.wisdom + '</li><li>' +
-        CharDetails.intelligence + '</li></ul>';
+      var charHtml = '<section class="characterWrapper">';
+      charHtml += '<section class="character">';
+      charHtml += '<section class="top">';
+      charHtml += '<section class="char-name">' + CharDetails.name + '</section>';
+      charHtml += '<section class="top-seg">';
+      charHtml += '<section class="labelWrap">';
+      charHtml += '<section class="label">Species</section>';
+      charHtml += '<section class="char-medText char-species">' + CharDetails.species + '</section>';
+      charHtml += '</section>';
+      charHtml += '<section class="labelWrap">';
+      charHtml += '<section class="label">Class</section>';
+      charHtml += '<section class="char-medText char-class">' + CharDetails.class + '</section>';
+      charHtml += '</section>';
+      charHtml += '<section class="labelWrap">';
+      charHtml += '<section class="label">Weapon</section>';
+      charHtml += '<section class="char-medText char-weapon">' + CharDetails.weapon + '</section>';
+      charHtml += '</section>';
+      charHtml += '<section class="labelWrap">';
+      charHtml += '<section class="label">Armor</section>';
+      charHtml += '<section class="char-medText char-armor">' + CharDetails.armor + '</section>';
+      charHtml += '</section>';
+      charHtml += '</section>';
+      charHtml += '</section>';
+      charHtml += '<hr>';
+      charHtml += '<section class="mid">';
+      charHtml += '<section class="labelWrap">';
+      charHtml += '<section class="label">Strength</section>';
+      charHtml += '<section class="char-medText char-strength">' + CharDetails.strength + '</section>';
+      charHtml += '</section>';
+      charHtml += '<section class="labelWrap">';
+      charHtml += '<section class="label">Agility</section>';
+      charHtml += '<section class="char-medText char-agility">' + CharDetails.agility + '</section>';
+      charHtml += '</section>';
+      charHtml += '<section class="labelWrap">';
+      charHtml += '<section class="label">Wisdom</section>';
+      charHtml += '<section class="char-medText char-wisdom">' + CharDetails.wisdom + '</section>';
+      charHtml += '</section>';
+      charHtml += '<section class="labelWrap">';
+      charHtml += '<section class="label">Intelligence</section>';
+      charHtml += '<section class="char-medText char-intelligence">' + CharDetails.intelligence + '</section>';
+      charHtml += '</section>';
+      charHtml += '</section>';
+      charHtml += '<hr>';
+      charHtml += '<section class="bottom">';
+      charHtml += '<section class="char-backstory">' + CharDetails.backstory + '</section>';
+      charHtml += '</section>';
+      charHtml += '</section>';
 
 
       charHtml += '<form id="postageForm" action="/createCharacter" method="post">' +
@@ -208,4 +271,20 @@ function toConfirm() {
 
       document.getElementById("viewCharacter").innerHTML = charHtml;
     });
+  } else {
+    message += "<ul>";
+    if (eleStr == "" || eleAgi == "" || eleWis == "" || eleInt == "") {
+      message += "<li>Please fill out all stats.</li>";
+    }
+    if(eleWeapon == ""){
+      message += "<li>Please select a weapon.</li>";
+    }
+    if(eleArmor == ""){
+      message += "<li>Please select an armor type.</li>";
+    }
+    message += "</ul>";
+    document.getElementById("message").innerHTML = message;
+    document.getElementById("message").style.display = "block";
+
+  }
 }
