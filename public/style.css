@@ -48,7 +48,7 @@ body {
     width: 50%;
 }
 
-#homeWrapper {
+#mainWrapper {
     display: grid;
     justify-content: center;
 }
