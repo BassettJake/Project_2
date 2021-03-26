@@ -145,10 +145,10 @@ function toBackstory() {
       message += "<li>Name can only include letters, spaces, commas, apostrophes, periods, and hyphens.</li>";
     }
     if(eleClass == ""){
-      message += "Please select a class.</li>";
+      message += "<li>Please select a class.</li>";
     }
     if(eleSpecies == ""){
-      message += "Please select a species.</li>";
+      message += "<li>Please select a species.</li>";
     }
     message += "</ul>";
     document.getElementById("message").innerHTML = message;
