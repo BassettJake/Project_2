@@ -35,7 +35,7 @@ app.post('/deleteCharacter', (req, res) => {
       console.log(err);
     }
     console.log("Query " + sqlCharacters + " successful");
-    res.send(results.rows);
+    console.log(results.rows);
   });
   res.render('pages/index');
 });

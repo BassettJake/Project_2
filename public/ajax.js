@@ -65,17 +65,7 @@ function viewChars() {
 
       }
       html += '</section>';
-      document.getElementById("mainWrapper").innerHTML = html;
-    }
-  });
-}
-
-function deleteChars(id) {
-  $.ajax({
-    url: '/deleteCharacter',
-    contentType: 'application/json',
-    success: function (res) {
-
+      document.getElementById("headingButton").addEventListener("click", home);
       document.getElementById("mainWrapper").innerHTML = html;
     }
   });
