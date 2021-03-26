@@ -162,9 +162,8 @@ function toBackstory() {
 
 function toStats() {
   var eleBackstory = document.getElementById("backstory").value;
-  var message = "";
-  //if (eleBackstory.match("/^[a-z ,.'!()-]+$/gi")) {
-  setCharDetails("backstory", document.getElementById("backstory").value);
+
+  setCharDetails("backstory", eleBackstory);
 
   $.get(
     '/createNext2',
@@ -173,16 +172,6 @@ function toStats() {
       document.getElementsByTagName("html")[0].innerHTML = html;
       document.getElementById("toConfirm").addEventListener("click", toConfirm);
     });
- // } else {
-    message += "<ul>";
-    if (!(eleBackstory.match("/^[a-z ,.'!()-]+$/gi"))) {
-      message += "<li>Backstory can only include letters, spaces, commas, exclaimations, parenthesis, apostrophes, periods, and hyphens.</li>";
-    }
-    message += "</ul>";
-    document.getElementById("message").innerHTML = message;
-    document.getElementById("message").style.display = "block";
-
-  //}
 }
 
 function toConfirm() {
