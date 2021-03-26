@@ -201,7 +201,7 @@ function toConfirm() {
   var eleArmor = CharDetails.armor;
   var message = "";
 
-  if ((eleStr != "" || eleStr >= 0 || eleStr <= 5) && (eleAgi != "" || eleAgi >= 0 || eleAgi <= 5) && (eleWis != "" || eleWis >= 0 || eleWis <= 5) && (eleInt != "" || eleInt >= 0 || eleInt <= 5) && eleWeapon != "" && eleArmor != "") {
+  if ((eleStr != "" & eleStr >= 0 & eleStr <= 5) && (eleAgi != "" && eleAgi >= 0 && eleAgi <= 5) && (eleWis != "" && eleWis >= 0 && eleWis <= 5) && (eleInt != "" && eleInt >= 0 && eleInt <= 5) && eleWeapon != "" && eleArmor != "") {
   setCharDetails("strength", document.getElementById("strength").value);
   setCharDetails("agility", document.getElementById("agility").value);
   setCharDetails("wisdom", document.getElementById("wisdom").value);
