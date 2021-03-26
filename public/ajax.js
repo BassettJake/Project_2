@@ -60,7 +60,7 @@ function viewChars() {
         html += '</section>';
       }
       html += '</section>';
-      document.getElementById("homeWrapper").innerHTML = html;
+      document.getElementById("mainWrapper").innerHTML = html;
     }
   });
 }
@@ -78,7 +78,7 @@ function home() {
       document.getElementsByTagName("TITLE")[0].textContent = "Home";
       var html = '<button class="button goldButton" id="viewCharButton">View Characters</button>' +
         '<button class="button goldButton" id="createCharButton">Create Character</button>';
-      document.getElementById("homeWrapper").innerHTML = html;
+      document.getElementById("mainWrapper").innerHTML = html;
       document.getElementById("viewCharButton").addEventListener("click", viewChars);
       document.getElementById("createCharButton").addEventListener("click", createChars);
     }
@@ -163,8 +163,7 @@ function toBackstory() {
 function toStats() {
   var eleBackstory = document.getElementById("backstory").value;
   var message = "";
-  if (eleBackstory.match("/^[a-z ,.'!()-]+$/gi")) {
-    console.log( document.getElementById("backstory").value);
+  //if (eleBackstory.match("/^[a-z ,.'!()-]+$/gi")) {
   setCharDetails("backstory", document.getElementById("backstory").value);
 
   $.get(
@@ -174,7 +173,7 @@ function toStats() {
       document.getElementsByTagName("html")[0].innerHTML = html;
       document.getElementById("toConfirm").addEventListener("click", toConfirm);
     });
-  } else {
+ // } else {
     message += "<ul>";
     if (!(eleBackstory.match("/^[a-z ,.'!()-]+$/gi"))) {
       message += "<li>Backstory can only include letters, spaces, commas, exclaimations, parenthesis, apostrophes, periods, and hyphens.</li>";
@@ -183,7 +182,7 @@ function toStats() {
     document.getElementById("message").innerHTML = message;
     document.getElementById("message").style.display = "block";
 
-  }
+  //}
 }
 
 function toConfirm() {
