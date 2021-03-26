@@ -140,6 +140,7 @@ function toBackstory() {
       function (res) {
         var html = res;
         document.getElementsByTagName("html")[0].innerHTML = html;
+        document.getElementById("headingButton").addEventListener("click", home);
         document.getElementById("toStats").addEventListener("click", toStats);
       });
   } else {
@@ -170,6 +171,7 @@ function toStats() {
     function (res) {
       var html = res;
       document.getElementsByTagName("html")[0].innerHTML = html;
+      document.getElementById("headingButton").addEventListener("click", home);
       document.getElementById("toConfirm").addEventListener("click", toConfirm);
     });
 }
@@ -256,7 +258,7 @@ function toConfirm() {
         '<input type="hidden" id="cintelligence" name="cintelligence" value="' + CharDetails.intelligence + '">' +
         '<input id="confirm" type="submit" name="submit" value="Submit">' +
         '</form>';
-
+      document.getElementById("headingButton").addEventListener("click", home);
       document.getElementById("viewCharacter").innerHTML = charHtml;
     });
   } else {
