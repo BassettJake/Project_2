@@ -162,7 +162,7 @@ function toBackstory() {
 }
 
 function toStats() {
-  var eleBackstory = document.getElementById("backstory").value;
+  var eleBackstory = (document.getElementById("backstory").value).trim();
   var message = "";
   if (eleBackstory.match("/^[a-z ,.'-!()]+$/gi")) {
     console.log( document.getElementById("backstory").value);
