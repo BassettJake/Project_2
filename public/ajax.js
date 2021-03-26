@@ -97,7 +97,6 @@ function createChars() {
       var html = res;
       document.getElementsByTagName("html")[0].innerHTML = html;
       document.getElementById("toBackstory").addEventListener("click", toBackstory);
-      document.getElementById("viewCharButton").addEventListener("click", viewChars);
       document.getElementById("createCharButton").addEventListener("click", createChars);
       document.getElementById("headingButton").addEventListener("click", home);
     });
@@ -166,6 +165,7 @@ function toStats() {
   var eleBackstory = document.getElementById("backstory").value;
   var message = "";
   if (eleBackstory.match("/^[a-z ,.'-!()]+$/gi")) {
+    console.log( document.getElementById("backstory").value);
   setCharDetails("backstory", document.getElementById("backstory").value);
 
   $.get(
