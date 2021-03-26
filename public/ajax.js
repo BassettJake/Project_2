@@ -149,7 +149,7 @@ function toBackstory() {
     if(eleSpecies == ""){
       message += "Please select a species." + '\n';
     }
-    document.getElementById("message").textContent = message;
+    document.getElementById("message").innerHTML = message;
     document.getElementById("message").style.display = "block";
 
   }
