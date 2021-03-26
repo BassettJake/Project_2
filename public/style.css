@@ -41,6 +41,11 @@ body {
 
 #message{
     display: none;
+    color:rgb(255, 215, 0);
+    margin: auto;
+    padding: 2vw;
+    text-align: center;
+    width: 50%;
 }
 
 #homeWrapper {
