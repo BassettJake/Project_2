@@ -201,7 +201,7 @@ function editChar(id) {
 function createChars() {
 
   for(i in CharDetails){
-    console.log(i);
+
     CharDetails[i] = "";
   }
   $.get(
