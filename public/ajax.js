@@ -222,7 +222,10 @@ var CharDetails = {
 };
 
 function setCharDetails(type, param) {
-  document.getElementById("c" + type).value = param;
+  if(!(document.getElementById("c" + type) === null)){
+    document.getElementById("c" + type).value = param;
+  }
+
   CharDetails[type] = param;
   if (type == "species") {
     document.getElementById("selectSpecies").textContent = param;
