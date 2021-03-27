@@ -23,9 +23,13 @@
     <section id="mainWrapper">
       <section id="message"></section>
     <section id="createCharacterWrapper">
+      <label for="strength">Strength</label>
       <input type="number" min="0" max="5" id="strength" name="strength">
+      <label for="agility">Agility</label>
       <input type="number" min="0" max="5" id="agility" name="agility">
+      <label for="wisdom">Wisdom</label>
       <input type="number" min="0" max="5" id="wisdom" name="wisdom">
+      <label for="intelligence">Intelligence</label>
       <input type="number" min="0" max="5" id="intelligence" name="intelligence">
       <section class="dropButton">
         <section class="button goldButton"><span id="selectArmor">Armor</span>
@@ -42,7 +46,7 @@
             <button type="button" class="button greyButton" onclick="setCharDetails('weapon', this.value)" value="Sword_&_Shield">Sword & Shield</button>
             <button type="button" class="button greyButton" onclick="setCharDetails('weapon', this.value)" value="Great_Axe">Great Axe</button>
             <button type="button" class="button greyButton" onclick="setCharDetails('weapon', this.value)" value="Bow">Bow</button>
-            \<button type="button" class="button greyButton" onclick="setCharDetails('weapon', this.value)" value="Daggers">Daggers</button>
+            <button type="button" class="button greyButton" onclick="setCharDetails('weapon', this.value)" value="Daggers">Daggers</button>
             <button type="button" class="button greyButton" onclick="setCharDetails('weapon', this.value)" value="Magic">Magic</button>
           </section>
         </section>

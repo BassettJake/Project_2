@@ -102,8 +102,13 @@ function editChar(id) {
   $.get(
     '/editChar?data=' + id,
     function (res) {
-console.log(res[0].species);
-      var html = '<input type="text" id="name" name="name" value="">' +
+
+      for(i in res[0]){
+        console.log(res[0][i].value, res[0][i]);
+      }
+
+      var html = '<section id="createCharacterWrapper">' +
+      '<input type="text" id="name" name="name" value="' + res[0].name + '">' +
       '<section class="dropButton">' +
         '<section class="button goldButton"><span id="selectSpecies">' + res[0].species + '</span>' +
           '<section class="dropDown">' +
@@ -116,16 +121,58 @@ console.log(res[0].species);
         '</section>' +
       '</section>' +
       '<section class="dropButton">' +
-        '<section class="button goldButton"><span id="selectClass">Class</span>' +
+        '<section class="button goldButton"><span id="selectClass">' + res[0].class + '</span>' +
           '<section class="dropDown">' +
             '<button type="button" class="button greyButton" onclick="setCharDetails(\'class\', this.value)" value="Fighter">Fighter</button>' +
             '<button type="button" class="button greyButton" onclick="setCharDetails(\'class\', this.value)" value="Rogue">Rogue</button>' +
             '<button type="button" class="button greyButton" onclick="setCharDetails(\'class\', this.value)" value="Mage">Mage</button>' +
           '</section>' +
         '</section>' +
+      '</section>' +
+      '<textarea id="backstory" name="backstory">' + res[0].backstory + '</textarea>' +
+      '<label for="strength">Strength</label>' +
+      '<input type="number" min="0" max="5" id="strength" name="strength" value="' + res[0].strength + '">' +
+      '<label for="agility">Agility</label>' +
+      '<input type="number" min="0" max="5" id="agility" name="agility" value="' + res[0].agility + '">' +
+      '<label for="wisdom">Wisdom</label>' +
+      '<input type="number" min="0" max="5" id="wisdom" name="wisdom" value="' + res[0].wisdom + '">' +
+      '<label for="intelligence">Intelligence</label>' +
+      '<input type="number" min="0" max="5" id="intelligence" name="intelligence" value="' + res[0].intelligence + '">' +
+      '<section class="dropButton">' +
+        '<section class="button goldButton"><span id="selectArmor">' + res[0].armor + '</span>' +
+          '<section class="dropDown">' +
+            '<button type="button" class="button greyButton" onclick="setCharDetails(\'armor\', this.value)" value="Cloth">Cloth</button>' +
+            '<button type="button" class="button greyButton" onclick="setCharDetails(\'armor\', this.value)" value="Leather">Leather</button>' +
+            '<button type="button" class="button greyButton" onclick="setCharDetails(\'armor\', this.value)" value="Plate">Plate</button>' +
+          '</section>' +
+        '</section>' +
+      '</section>' +
+      '<section class="dropButton">' +
+        '<section class="button goldButton"><span id="selectWeapon">' + res[0].weapon + '</span>' +
+          '<section class="dropDown">' +
+            '<button type="button" class="button greyButton" onclick="setCharDetails(\'weapon\', this.value)" value="Sword_&_Shield">Sword & Shield</button>' +
+            '<button type="button" class="button greyButton" onclick="setCharDetails(\'weapon\', this.value)" value="Great_Axe">Great Axe</button>' +
+            '<button type="button" class="button greyButton" onclick="setCharDetails(\'weapon\', this.value)" value="Bow">Bow</button>' +
+            '<button type="button" class="button greyButton" onclick="setCharDetails(\'weapon\', this.value)" value="Daggers">Daggers</button>' +
+            '<button type="button" class="button greyButton" onclick="setCharDetails(\'weapon\', this.value)" value="Magic">Magic</button>' +
+          '</section>' +
+        '</section>' +
+      '</section>' +
       '</section>';
 
-
+      var charHtml = '<form action="/createCharacter" method="post">' +
+      '<input type="hidden" id="cname" name="cname" value="' + CharDetails.name + '">' +
+      '<input type="hidden" id="cspecies" name="cspecies" value="' + CharDetails.species + '">' +
+      '<input type="hidden" id="cclass" name="cclass" value="' + CharDetails.class + '">' +
+      '<input type="hidden" id="cbackstory" name="cbackstory" value="' + CharDetails.backstory + '">' +
+      '<input type="hidden" id="cweapon" name="cweapon" value="' + CharDetails.weapon + '">' +
+      '<input type="hidden" id="carmor" name="carmor" value="' + CharDetails.armor + '">' +
+      '<input type="hidden" id="cstrength" name="cstrength" value="' + CharDetails.strength + '">' +
+      '<input type="hidden" id="cagility" name="cagility" value="' + CharDetails.agility + '">' +
+      '<input type="hidden" id="cwisdom" name="cwisdom" value="' + CharDetails.wisdom + '">' +
+      '<input type="hidden" id="cintelligence" name="cintelligence" value="' + CharDetails.intelligence + '">' +
+      '<input class="confirm" type="submit" name="submit" value="Submit">' +
+      '</form>';
 
       document.getElementById("headingButton").addEventListener("click", home);
     });
