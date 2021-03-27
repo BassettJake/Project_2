@@ -40,6 +40,19 @@ app.post('/deleteCharacter', (req, res) => {
   res.render('pages/index');
 });
 
+app.get('/editChar', (req, res) => {
+  const sqlCharacters = "SELECT * FROM characters WHERE id=" + req.body.cid;
+
+  pool.query(sqlCharacters, function (err, results) {
+    if (err) {
+      console.log("Error in query: ");
+      console.log(err);
+    }
+    console.log("Query " + sqlCharacters + " successful");
+    res.send(results.rows);
+  });
+});
+
 app.get('/viewCharacters', (req, res) => {
   const sqlCharacters = "SELECT * FROM characters";
 
