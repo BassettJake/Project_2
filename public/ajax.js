@@ -102,8 +102,30 @@ function editChar(id) {
   $.get(
     '/editChar?data=' + id,
     function (res) {
+console.log(res);
+      var html = '<input type="text" id="name" name="name" value="">' +
+      '<section class="dropButton">' +
+        '<section class="button goldButton"><span id="selectSpecies"></span>' +
+          '<section class="dropDown">' +
+            '<button type="button" class="button greyButton" onclick="setCharDetails(\'species\', this.value)" value="Human">Human</button>' +
+            '<button type="button" class="button greyButton" onclick="setCharDetails(\'species\', this.value)" value="Elf">Elf</button>' +
+            '<button type="button" class="button greyButton" onclick="setCharDetails(\'species\', this.value)" value="Dwarf">Dwarf</button>' +
+            '<button type="button" class="button greyButton" onclick="setCharDetails(\'species\', this.value)" value="Orc">Orc</button>' +
+            '<button type="button" class="button greyButton" onclick="setCharDetails(\'species\', this.value)" value="Half-Elf">Half-Elf</button>' +
+          '</section>' +
+        '</section>' +
+      '</section>' +
+      '<section class="dropButton">' +
+        '<section class="button goldButton"><span id="selectClass">Class</span>' +
+          '<section class="dropDown">' +
+            '<button type="button" class="button greyButton" onclick="setCharDetails(\'class\', this.value)" value="Fighter">Fighter</button>' +
+            '<button type="button" class="button greyButton" onclick="setCharDetails(\'class\', this.value)" value="Rogue">Rogue</button>' +
+            '<button type="button" class="button greyButton" onclick="setCharDetails(\'class\', this.value)" value="Mage">Mage</button>' +
+          '</section>' +
+        '</section>' +
+      '</section>';
 
-      var html = res;
+
 
       document.getElementById("headingButton").addEventListener("click", home);
     });
