@@ -69,7 +69,7 @@ app.post('/editConfirm', (req, res) => {
   var cintelligence = req.body.cintelligence;
 
   const sqlCharacters = "UPDATE characters SET name='" + cname + "', species='" + cspecies + "', class='"+ cclass + "', backstory='"+ cbackstory + "'" +
-  "',weapon='" + cweapon + "', armor='" + carmor + "', strength='" + cstrength + "', agility='" + cagility + "', wisdom='"+ cwisdom + "', intelligence='"+ cintelligence + "'" + 
+  ",weapon='" + cweapon + "', armor='" + carmor + "', strength='" + cstrength + "', agility='" + cagility + "', wisdom='"+ cwisdom + "', intelligence='"+ cintelligence + "'" + 
   "WHERE id='" + cid + "'";
 
 
