@@ -102,23 +102,6 @@ function editChar(id) {
   $.get(
     '/editChar?data=' + id,
     function (res) {
-      var types = ["name",
-        "species",
-        "class",
-        "backstory",
-        "weapon",
-        "armor",
-        "strength",
-        "agility",
-        "wisdom",
-        "intelligence"
-      ];
-      var j = 0;
-      for (i in res[0]) {
-        setCharDetails(types[j], res[0][i]);
-        j++;
-      }
-
       var html = '<section id="createCharacterWrapper">' +
         '<input type="text" id="name" name="name" onchange="setCharDetails(\'name\', this.value)" value="' + res[0].name + '">' +
         '<section class="dropButton">' +
@@ -172,21 +155,39 @@ function editChar(id) {
         '</section>' +
         '</section>';
 
+      document.getElementById("mainWrapper").innerHTML = html;
+
+      var types = ["name",
+        "species",
+        "class",
+        "backstory",
+        "weapon",
+        "armor",
+        "strength",
+        "agility",
+        "wisdom",
+        "intelligence"
+      ];
+      var j = 0;
+      for (i in res[0]) {
+        setCharDetails(types[j], res[0][i]);
+        j++;
+      }
+
       var charHtml = '<form action="/createCharacter" method="post">' +
-        '<input type="hidden" id="cname" name="cname" value="' + CharDetails.name + '">' +
-        '<input type="hidden" id="cspecies" name="cspecies" value="' + CharDetails.species + '">' +
-        '<input type="hidden" id="cclass" name="cclass" value="' + CharDetails.class + '">' +
-        '<input type="hidden" id="cbackstory" name="cbackstory" value="' + CharDetails.backstory + '">' +
-        '<input type="hidden" id="cweapon" name="cweapon" value="' + CharDetails.weapon + '">' +
-        '<input type="hidden" id="carmor" name="carmor" value="' + CharDetails.armor + '">' +
-        '<input type="hidden" id="cstrength" name="cstrength" value="' + CharDetails.strength + '">' +
-        '<input type="hidden" id="cagility" name="cagility" value="' + CharDetails.agility + '">' +
-        '<input type="hidden" id="cwisdom" name="cwisdom" value="' + CharDetails.wisdom + '">' +
-        '<input type="hidden" id="cintelligence" name="cintelligence" value="' + CharDetails.intelligence + '">' +
-        '<input class="confirm" type="submit" name="submit" value="Submit">' +
-        '</form>';
-        
-document.getElementById("mainWrapper").innerHTML = html;
+      '<input type="hidden" id="cname" name="cname" value="' + CharDetails.name + '">' +
+      '<input type="hidden" id="cspecies" name="cspecies" value="' + CharDetails.species + '">' +
+      '<input type="hidden" id="cclass" name="cclass" value="' + CharDetails.class + '">' +
+      '<input type="hidden" id="cbackstory" name="cbackstory" value="' + CharDetails.backstory + '">' +
+      '<input type="hidden" id="cweapon" name="cweapon" value="' + CharDetails.weapon + '">' +
+      '<input type="hidden" id="carmor" name="carmor" value="' + CharDetails.armor + '">' +
+      '<input type="hidden" id="cstrength" name="cstrength" value="' + CharDetails.strength + '">' +
+      '<input type="hidden" id="cagility" name="cagility" value="' + CharDetails.agility + '">' +
+      '<input type="hidden" id="cwisdom" name="cwisdom" value="' + CharDetails.wisdom + '">' +
+      '<input type="hidden" id="cintelligence" name="cintelligence" value="' + CharDetails.intelligence + '">' +
+      '<input class="confirm" type="submit" name="submit" value="Submit">' +
+      '</form>';
+      document.getElementById("mainWrapper").innerHTML += charHtml;
       document.getElementById("headingButton").addEventListener("click", home);
     });
 }
