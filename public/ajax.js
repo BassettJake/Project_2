@@ -105,7 +105,7 @@ function editChar(id) {
 console.log(res);
       var html = '<input type="text" id="name" name="name" value="">' +
       '<section class="dropButton">' +
-        '<section class="button goldButton"><span id="selectSpecies"></span>' +
+        '<section class="button goldButton"><span id="selectSpecies">' + res[0].species + '</span>' +
           '<section class="dropDown">' +
             '<button type="button" class="button greyButton" onclick="setCharDetails(\'species\', this.value)" value="Human">Human</button>' +
             '<button type="button" class="button greyButton" onclick="setCharDetails(\'species\', this.value)" value="Elf">Elf</button>' +
