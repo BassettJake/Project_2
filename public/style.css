@@ -16,6 +16,10 @@ label{
     color: rgb(255, 215, 0);
 }
 
+form .goldButton{
+    width:100%;
+}
+
 textarea{
     resize:vertical;
     text-align: left;

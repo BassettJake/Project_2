@@ -191,7 +191,7 @@ function editChar(id) {
       '<input type="hidden" id="cagility" name="cagility" value="' + CharDetails.agility + '">' +
       '<input type="hidden" id="cwisdom" name="cwisdom" value="' + CharDetails.wisdom + '">' +
       '<input type="hidden" id="cintelligence" name="cintelligence" value="' + CharDetails.intelligence + '">' +
-      '<input class="confirm" type="submit" name="submit" value="Submit">' +
+      '<input class="confirm button goldButton" type="submit" name="submit" value="Submit">' +
       '</form>';
       document.getElementById("mainWrapper").innerHTML += charHtml;
       document.getElementById("headingButton").addEventListener("click", home);
