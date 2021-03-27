@@ -102,7 +102,7 @@ function editChar(id) {
   $.get(
     '/editChar?data=' + id,
     function (res) {
-console.log(res);
+console.log(res[0].species);
       var html = '<input type="text" id="name" name="name" value="">' +
       '<section class="dropButton">' +
         '<section class="button goldButton"><span id="selectSpecies">' + res[0].species + '</span>' +
