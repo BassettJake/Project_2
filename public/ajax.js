@@ -113,8 +113,10 @@ function editChar(id) {
         "wisdom",
         "intelligence"
       ];
+      var j = 0;
       for (i in res[0]) {
-        setCharDetails(types[i], res[0][i]);
+        setCharDetails(types[j], res[0][i]);
+        j++;
       }
 
       var html = '<section id="createCharacterWrapper">' +
