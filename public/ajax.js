@@ -170,9 +170,8 @@ function editChar(id) {
       ];
       var j = 0;
       for (i in res[0]) {
-        if(j > 0){
+        console.log(i);
           setCharDetails(types[j], res[0][i]);
-        }
         j++;
       }
 console.log(res[0]['id']);
