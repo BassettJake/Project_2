@@ -170,11 +170,14 @@ function editChar(id) {
       ];
       var j = 0;
       for (i in res[0]) {
-        setCharDetails(types[j], res[0][i]);
+        if(j > 0){
+          setCharDetails(types[j], res[0][i]);
+        }
         j++;
       }
-
-      var charHtml = '<form action="/createCharacter" method="post">' +
+console.log(res[0]['id']);
+      var charHtml = '<form action="/editConfirm" method="post">' +
+      '<input type="hidden" id="cid" name="cid" value="' + res[0]['id'] + '">' +
       '<input type="hidden" id="cname" name="cname" value="' + CharDetails.name + '">' +
       '<input type="hidden" id="cspecies" name="cspecies" value="' + CharDetails.species + '">' +
       '<input type="hidden" id="cclass" name="cclass" value="' + CharDetails.class + '">' +

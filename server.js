@@ -55,6 +55,35 @@ app.get('/editChar', (req, res) => {
   });
 });
 
+app.post('/createCharacter', (req, res) => {
+  var cid = req.body.cid;
+  var cname = req.body.cname;
+  var cspecies = req.body.cspecies;
+  var cclass = req.body.cclass;
+  var cbackstory = req.body.cbackstory;
+  var cweapon = req.body.cweapon;
+  var carmor = req.body.carmor;
+  var cstrength = req.body.cstrength;
+  var cagility = req.body.cagility;
+  var cwisdom = req.body.cwisdom;
+  var cintelligence = req.body.cintelligence;
+
+  const sqlCharacters = "UPDATE characters SET name='" + cname + "', species='" + cspecies + "', class='"+ cclass + "', backstory='"+ cbackstory + "'" +
+  "',weapon='" + cweapon + "', armor='" + carmor + "', strength='" + cstrength + "', agility='" + cagility + "', wisdom='"+ cwisdom + "', intelligence='"+ cintelligence + "'" + 
+  "WHERE id='" + cid + "'";
+
+
+  pool.query(sqlCharacters, function (err, results) {
+    if (err) {
+      console.log("Error in query: ");
+      console.log(err);
+    }
+    console.log("Query " + sqlCharacters + " successful");
+    console.log(results.rows);
+  });
+  res.render('pages/index');
+});
+
 app.get('/viewCharacters', (req, res) => {
   const sqlCharacters = "SELECT * FROM characters";
 
