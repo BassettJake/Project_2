@@ -41,7 +41,9 @@ app.post('/deleteCharacter', (req, res) => {
 });
 
 app.get('/editChar', (req, res) => {
-  const sqlCharacters = "SELECT * FROM characters WHERE id=" + req.body.cid;
+  var id = req.query.data;
+  console.log(id);
+  const sqlCharacters = "SELECT * FROM characters WHERE id=" + id;
 
   pool.query(sqlCharacters, function (err, results) {
     if (err) {

@@ -98,8 +98,9 @@ $(function () {
 
 
 function editChar(id) {
+  console.log(id);
   $.get(
-    '/editChar',
+    '/editChar?data=' + id,
     function (res) {
 
       var html = res;
