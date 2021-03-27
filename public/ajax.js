@@ -170,9 +170,11 @@ function editChar(id) {
       ];
       var j = 0;
       for (i in res[0]) {
-        console.log(i);
+        if(i != "id"){
           setCharDetails(types[j], res[0][i]);
         j++;
+        }
+
       }
 console.log(res[0]['id']);
       var charHtml = '<form action="/editConfirm" method="post">' +
