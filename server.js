@@ -55,7 +55,7 @@ app.get('/editChar', (req, res) => {
   });
 });
 
-app.post('/createCharacter', (req, res) => {
+app.post('/editConfirm', (req, res) => {
   var cid = req.body.cid;
   var cname = req.body.cname;
   var cspecies = req.body.cspecies;
