@@ -57,11 +57,13 @@ function viewChars() {
         html += '<section class="bottom">';
         html += '<section class="char-backstory">' + res[i]['backstory'] + '</section>';
         html += '</section>';
+        html += '<section class="buttonWrapper">';
         html += '<form action="/deleteCharacter" method="post">' +
           '<input type="hidden" id="cid" name="cid" value="' + res[i]['id'] + '">' +
-          '<input class="confirm" type="submit" name="submit" value="Delete">' +
+          '<input class="confirm button goldButton" type="submit" name="submit" value="Delete">' +
           '</form>';
         html += '<button type="button" class="button goldButton" id="editCharButton" onclick="editChar(' + res[i]['id'] + ')">Edit</button>';
+        html += '</section>';
         html += '</section>';
 
       }
@@ -367,7 +369,7 @@ function toConfirm() {
           '<input type="hidden" id="cagility" name="cagility" value="' + CharDetails.agility + '">' +
           '<input type="hidden" id="cwisdom" name="cwisdom" value="' + CharDetails.wisdom + '">' +
           '<input type="hidden" id="cintelligence" name="cintelligence" value="' + CharDetails.intelligence + '">' +
-          '<input class="confirm" type="submit" name="submit" value="Submit">' +
+          '<input class="confirm button goldButton" type="submit" name="submit" value="Submit">' +
           '</form>';
         document.getElementById("headingButton").addEventListener("click", home);
         document.getElementById("viewCharacter").innerHTML = charHtml;
